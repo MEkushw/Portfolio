@@ -30,10 +30,12 @@ export default function RevSyncPage() {
     if (!cta) return;
     const onScroll = () => {
       const currY = window.scrollY;
-      if (currY > 200) {
-        if (currY > lastScrollY.current && currY - lastScrollY.current > 8) {
+      if (currY > 60) {
+        if (currY > lastScrollY.current + 2) {
+          // Scrolling Down -> Hide Back CTA
           cta.classList.add('cta-hidden');
-        } else if (lastScrollY.current - currY > 8) {
+        } else if (currY < lastScrollY.current - 2) {
+          // Scrolling Up -> Show Back CTA
           cta.classList.remove('cta-hidden');
         }
       } else {
@@ -41,7 +43,7 @@ export default function RevSyncPage() {
       }
       lastScrollY.current = currY;
     };
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -57,7 +59,7 @@ export default function RevSyncPage() {
 
 
     {/*  Floating Smart Hide/Show Back CTA  */}
-    <a href="/" className="cs-back-cta revsync-back-cta" aria-label="Back to Homepage">
+    <a href="/" ref={backCtaRef} className="cs-back-cta revsync-back-cta" aria-label="Back to Homepage">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>

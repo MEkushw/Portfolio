@@ -34,7 +34,8 @@ body.case-study-page {
     will-change: transform, opacity;
 }
 
-.cs-back-cta.cs-back-cta-hidden {
+.cs-back-cta.cs-back-cta-hidden,
+.cs-back-cta.cta-hidden {
     transform: translateY(-120px) !important;
     opacity: 0 !important;
     pointer-events: none !important;

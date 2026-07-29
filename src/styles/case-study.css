@@ -4874,3 +4874,14 @@ body.revsync-page .f-meta-label {
         border-radius: 12px;
     }
 }
+
+/* Mobile Responsive Floating Back CTA */
+@media (max-width: 768px) {
+    .cs-back-cta {
+        top: 14px !important;
+        left: 14px !important;
+        padding: 8px 16px !important;
+        font-size: 12px !important;
+        border-radius: 20px !important;
+    }
+}

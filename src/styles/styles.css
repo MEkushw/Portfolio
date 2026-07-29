@@ -521,6 +521,29 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     box-shadow: 0 10px 28px rgba(243, 182, 31, 0.45);
 }
 
+
+.cs-btn.cs-btn-cyan {
+    background: linear-gradient(135deg, #00E5FF 0%, #00B4D8 100%) !important;
+    color: #070708 !important;
+    font-weight: 800;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 229, 255, 0.35);
+}
+
+.cs-btn.cs-btn-cyan:hover {
+    background: linear-gradient(135deg, #33EBFF 0%, #0096C7 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(0, 229, 255, 0.55);
+    border-color: rgba(128, 243, 255, 0.7);
+}
+
+.cs-tag.cs-tag-cyan {
+    color: #00E5FF !important;
+    background: rgba(0, 229, 255, 0.15) !important;
+    border-color: rgba(0, 229, 255, 0.35) !important;
+}
+
 .cs-btn.cs-btn-blue {
     background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
     color: #FFFFFF !important;
@@ -733,9 +756,26 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 60px rgba(247, 163, 132, 0.14), 0 0 100px rgba(230, 57, 70, 0.08);
-    animation: floatIllustration 7s ease-in-out infinite;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: #070708;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.about-particle-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.about-illustration.touching .about-particle-canvas {
+    opacity: 1;
 }
 
 .about-banner-img {
@@ -743,11 +783,12 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     height: auto;
     display: block;
     border-radius: 16px;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 0.35s ease, filter 0.35s ease;
 }
 
-.about-illustration:hover {
-    box-shadow: 0 30px 80px rgba(247, 163, 132, 0.25), 0 0 120px rgba(230, 57, 70, 0.15);
+.about-illustration.touching .about-banner-img {
+    opacity: 0.1;
+    filter: blur(6px);
 }
 
 @keyframes floatIllustration {

@@ -48,11 +48,14 @@ export default function HomePage() {
     if (!nav) return;
     const onScroll = () => {
       const currY = window.scrollY;
-      nav.classList.toggle('scrolled', currY > 80);
-      if (currY > 140) {
-        if (currY > lastScrollY.current && currY - lastScrollY.current > 6) {
+      nav.classList.toggle('scrolled', currY > 40);
+
+      if (currY > 60) {
+        if (currY > lastScrollY.current + 2) {
+          // Scrolling Down -> Hide Header upwards
           nav.classList.add('nav-hidden');
-        } else if (lastScrollY.current - currY > 6) {
+        } else if (currY < lastScrollY.current - 2) {
+          // Scrolling Up -> Show Header back into view
           nav.classList.remove('nav-hidden');
         }
       } else {
@@ -60,7 +63,7 @@ export default function HomePage() {
       }
       lastScrollY.current = currY;
     };
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 

@@ -8,6 +8,11 @@ export default function RevSyncPage() {
   const [lightboxSrc, setLightboxSrc] = useState('');
   const [lightboxTitle, setLightboxTitle] = useState('');
   const [lightboxSub, setLightboxSub] = useState('');
+    useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
   const backCtaRef = useRef<HTMLAnchorElement>(null);
   const lastScrollY = useRef(0);
 
@@ -973,11 +978,12 @@ export default function RevSyncPage() {
       {/* Lightbox Modal */}
       {lightboxOpen && (
         <div className="cs-lightbox-overlay active" onClick={closeLightbox}>
-          <div className="cs-lightbox-content" onClick={(e) => e.stopPropagation()}>
+          <div className="cs-lightbox-content" onClick={closeLightbox}>
             <button className="cs-lightbox-close" onClick={closeLightbox} aria-label="Close lightbox">&times;</button>
-            <img loading="lazy" decoding="async" src={lightboxSrc} alt={lightboxTitle} className="cs-lightbox-img" />
+            {lightboxSrc && <img loading="lazy" decoding="async" src={lightboxSrc} alt={lightboxTitle} className="cs-lightbox-img" onClick={closeLightbox} />}
             {lightboxTitle && <p className="cs-lightbox-title">{lightboxTitle}</p>}
             {lightboxSub && <p className="cs-lightbox-sub">{lightboxSub}</p>}
+            <div className="lightbox-tap-close-hint">Tap anywhere to close</div>
           </div>
         </div>
       )}

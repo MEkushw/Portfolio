@@ -4885,3 +4885,32 @@ body.revsync-page .f-meta-label {
         border-radius: 20px !important;
     }
 }
+
+/* Touch Action & Scroll Lock Prevention for Mobile Wireframes */
+.lofi-gallery-grid,
+.lofi-card,
+.lofi-img-frame,
+.hifi-gallery-grid,
+.thumb-card,
+.cs-image-frame,
+.cs-dark-card,
+.persona-card {
+    touch-action: pan-y !important;
+}
+
+.cs-lightbox-overlay {
+    touch-action: pan-y;
+    cursor: pointer;
+}
+
+.lightbox-tap-close-hint {
+    margin-top: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.12);
+    padding: 6px 18px;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}

@@ -159,7 +159,7 @@ export default function AttendlyPage() {
                         </div>
 
                         <div className="hero-visual-col">
-                            <img src="/assets/images/attendly/attendly_hero_phones.png" alt="Attendly Mobile App Dual Phone Showcase" className="hero-phones-img" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/attendly_hero_phones.png" alt="Attendly Mobile App Dual Phone Showcase" className="hero-phones-img" />
                         </div>
                     </div>
                 </div>
@@ -335,7 +335,7 @@ export default function AttendlyPage() {
                     {/*  Persona 1: Employee  */}
                     <div className="cs-dark-card persona-card">
                         <div className="persona-top">
-                            <img src="/assets/images/attendly/source/KhushiSingh.png" alt="Khushi Singh - Sales Executive" className="persona-avatar" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/KhushiSingh.png" alt="Khushi Singh - Sales Executive" className="persona-avatar" />
                             <div>
                                 <h3 className="persona-name">Khushi Singh</h3>
                                 <span className="persona-role">Sales Executive (Employee)</span>
@@ -365,7 +365,7 @@ export default function AttendlyPage() {
                     {/*  Persona 2: Admin  */}
                     <div className="cs-dark-card persona-card">
                         <div className="persona-top">
-                            <img src="/assets/images/attendly/source/NomanKhan.png" alt="Noman Ketan - Director" className="persona-avatar" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/NomanKhan.png" alt="Noman Ketan - Director" className="persona-avatar" />
                             <div>
                                 <h3 className="persona-name">Noman Ketan</h3>
                                 <span className="persona-role">Director (Admin)</span>
@@ -651,9 +651,9 @@ export default function AttendlyPage() {
 
                 {/*  Lo-Fi Wireframe Showcase Gallery (Clean 8-Card Grid)  */}
                 <div className="lofi-gallery-grid">
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/source/Lo-Fi_Wireframe_1.png', 'LO-FI WIREFRAME • 01', '01. Employee Dashboard')}>
+                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_1.png', 'LO-FI WIREFRAME • 01', '01. Employee Dashboard')}>
                         <div className="lofi-img-frame">
-                            <img src="/assets/images/attendly/source/Lo-Fi_Wireframe_1.png" alt="Employee Dashboard Wireframe" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_1.png" alt="Employee Dashboard Wireframe" />
                         </div>
                         <div className="lofi-card-meta">
                             <span className="lofi-badge">EMPLOYEE • WF-01</span>
@@ -661,9 +661,9 @@ export default function AttendlyPage() {
                         </div>
                     </div>
 
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/source/Lo-Fi_Wireframe_2.png', 'LO-FI WIREFRAME • 02', '02. Attendance Log')}>
+                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_2.png', 'LO-FI WIREFRAME • 02', '02. Attendance Log')}>
                         <div className="lofi-img-frame">
-                            <img src="/assets/images/attendly/source/Lo-Fi_Wireframe_2.png" alt="Attendance Wireframe" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_2.png" alt="Attendance Wireframe" />
                         </div>
                         <div className="lofi-card-meta">
                             <span className="lofi-badge">EMPLOYEE • WF-02</span>
@@ -671,9 +671,9 @@ export default function AttendlyPage() {
                         </div>
                     </div>
 
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/source/Lo-Fi_Wireframe_3.png', 'LO-FI WIREFRAME • 03', '03. Tasks Management')}>
+                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_3.png', 'LO-FI WIREFRAME • 03', '03. Tasks Management')}>
                         <div className="lofi-img-frame">
-                            <img src="/assets/images/attendly/source/Lo-Fi_Wireframe_3.png" alt="Tasks Wireframe" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_3.png" alt="Tasks Wireframe" />
                         </div>
                         <div className="lofi-card-meta">
                             <span className="lofi-badge">EMPLOYEE • WF-03</span>
@@ -681,9 +681,9 @@ export default function AttendlyPage() {
                         </div>
                     </div>
 
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/source/Lo-Fi_Wireframe_4.png', 'LO-FI WIREFRAME • 04', '04. Leave Requests')}>
+                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_4.png', 'LO-FI WIREFRAME • 04', '04. Leave Requests')}>
                         <div className="lofi-img-frame">
-                            <img src="/assets/images/attendly/source/Lo-Fi_Wireframe_4.png" alt="Leave Requests Wireframe" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_4.png" alt="Leave Requests Wireframe" />
                         </div>
                         <div className="lofi-card-meta">
                             <span className="lofi-badge">EMPLOYEE • WF-04</span>
@@ -691,9 +691,9 @@ export default function AttendlyPage() {
                         </div>
                     </div>
 
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/source/Lo-Fi_Wireframe_5.png', 'LO-FI WIREFRAME • 05', '05. Notifications Feed')}>
+                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_5.png', 'LO-FI WIREFRAME • 05', '05. Notifications Feed')}>
                         <div className="lofi-img-frame">
-                            <img src="/assets/images/attendly/source/Lo-Fi_Wireframe_5.png" alt="Notifications Wireframe" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_5.png" alt="Notifications Wireframe" />
                         </div>
                         <div className="lofi-card-meta">
                             <span className="lofi-badge">EMPLOYEE • WF-05</span>
@@ -701,9 +701,9 @@ export default function AttendlyPage() {
                         </div>
                     </div>
 
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/source/Lo-Fi_Wireframe_8.png', 'LO-FI WIREFRAME • 06', '06. Admin Dashboard')}>
+                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_8.png', 'LO-FI WIREFRAME • 06', '06. Admin Dashboard')}>
                         <div className="lofi-img-frame">
-                            <img src="/assets/images/attendly/source/Lo-Fi_Wireframe_8.png" alt="Admin Dashboard Wireframe" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_8.png" alt="Admin Dashboard Wireframe" />
                         </div>
                         <div className="lofi-card-meta">
                             <span className="lofi-badge admin-lofi-badge">ADMIN • WF-06</span>
@@ -711,9 +711,9 @@ export default function AttendlyPage() {
                         </div>
                     </div>
 
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/source/Lo-Fi_Wireframe_6.png', 'LO-FI WIREFRAME • 07', '07. Assign Tasks')}>
+                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_6.png', 'LO-FI WIREFRAME • 07', '07. Assign Tasks')}>
                         <div className="lofi-img-frame">
-                            <img src="/assets/images/attendly/source/Lo-Fi_Wireframe_6.png" alt="Assign Tasks Wireframe" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_6.png" alt="Assign Tasks Wireframe" />
                         </div>
                         <div className="lofi-card-meta">
                             <span className="lofi-badge admin-lofi-badge">ADMIN • WF-07</span>
@@ -721,9 +721,9 @@ export default function AttendlyPage() {
                         </div>
                     </div>
 
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/source/Lo-Fi_Wireframe_7.png', 'LO-FI WIREFRAME • 08', '08. Employee Performance')}>
+                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_7.png', 'LO-FI WIREFRAME • 08', '08. Employee Performance')}>
                         <div className="lofi-img-frame">
-                            <img src="/assets/images/attendly/source/Lo-Fi_Wireframe_7.png" alt="Employee Performance Wireframe" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_7.png" alt="Employee Performance Wireframe" />
                         </div>
                         <div className="lofi-card-meta">
                             <span className="lofi-badge admin-lofi-badge">ADMIN • WF-08</span>
@@ -756,8 +756,8 @@ export default function AttendlyPage() {
                     <div className="inspector-layout">
                         {/*  Featured Stage (Left)  */}
                         <div className="inspector-stage">
-                            <div className="stage-frame hifi-frame" onClick={() => { openLightbox('/assets/images/attendly/source/Hi-Fi_Wireframe_1.png', 'Hi-Fi Featured Screen', 'Attendance') }} title="Tap to view full screen">
-                                <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_1.png" alt="Hi-Fi Featured Screen" id="hifi-stage-img" className="stage-img" />
+                            <div className="stage-frame hifi-frame" onClick={() => { openLightbox('/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png', 'Hi-Fi Featured Screen', 'Attendance') }} title="Tap to view full screen">
+                                <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png" alt="Hi-Fi Featured Screen" id="hifi-stage-img" className="stage-img" />
                             </div>
                             <div className="stage-details">
                                 <div className="stage-badge-row">
@@ -779,35 +779,35 @@ export default function AttendlyPage() {
                             <h4 className="selector-heading">Select UI Screen (8 Screens)</h4>
                             <div className="thumb-grid" id="hifi-thumb-grid">
                                 <div className="thumb-card active" data-cat="employee" onClick={() => selectHiFi(0)}>
-                                    <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_1.png" alt="Attendance" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png" alt="Attendance" />
                                     <span>01. Attendance</span>
                                 </div>
                                 <div className="thumb-card" data-cat="employee" onClick={() => selectHiFi(1)}>
-                                    <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_3.png" alt="Notifications" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_3.png" alt="Notifications" />
                                     <span>02. Notifications</span>
                                 </div>
                                 <div className="thumb-card" data-cat="employee" onClick={() => selectHiFi(2)}>
-                                    <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_4.png" alt="Leave Requests" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_4.png" alt="Leave Requests" />
                                     <span>03. Leave Req</span>
                                 </div>
                                 <div className="thumb-card" data-cat="employee" onClick={() => selectHiFi(3)}>
-                                    <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_6.png" alt="Employee Performance" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_6.png" alt="Employee Performance" />
                                     <span>04. Emp Report</span>
                                 </div>
                                 <div className="thumb-card" data-cat="admin" onClick={() => selectHiFi(4)}>
-                                    <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_9.png" alt="Admin Dashboard" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_9.png" alt="Admin Dashboard" />
                                     <span>05. Admin Dash</span>
                                 </div>
                                 <div className="thumb-card" data-cat="admin" onClick={() => selectHiFi(5)}>
-                                    <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_5.png" alt="Latecomers Report" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_5.png" alt="Latecomers Report" />
                                     <span>06. Latecomers</span>
                                 </div>
                                 <div className="thumb-card" data-cat="admin" onClick={() => selectHiFi(6)}>
-                                    <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_7.png" alt="Admin Employee Performance" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_7.png" alt="Admin Employee Performance" />
                                     <span>07. Admin Perf</span>
                                 </div>
                                 <div className="thumb-card" data-cat="admin" onClick={() => selectHiFi(7)}>
-                                    <img src="/assets/images/attendly/source/Hi-Fi_Wireframe_8.png" alt="404 Error State" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_8.png" alt="404 Error State" />
                                     <span>08. 404 Error</span>
                                 </div>
                             </div>
@@ -843,7 +843,7 @@ export default function AttendlyPage() {
                             {/*  Step 1  */}
                             <div className="journey-step-box">
                                 <div className="journey-screen-frame" onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow1_Step1.png', 'EMPLOYEE JOURNEY • STEP 01', '01. Open Home Dashboard')} title="Tap to expand screen">
-                                    <img src="/assets/images/attendly/flow_screens/Flow1_Step1.png" alt="Step 1: Open Home Dashboard" className="journey-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/flow_screens/Flow1_Step1.png" alt="Step 1: Open Home Dashboard" className="journey-img" />
                                 </div>
                                 <div className="journey-step-info">
                                     <span className="step-mini-badge">STEP 01</span>
@@ -857,7 +857,7 @@ export default function AttendlyPage() {
                             {/*  Step 2  */}
                             <div className="journey-step-box featured-step">
                                 <div className="journey-screen-frame" onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow1_Step2.png', 'EMPLOYEE JOURNEY • STEP 02', '02. Slide to Check-In')} title="Tap to expand screen">
-                                    <img src="/assets/images/attendly/flow_screens/Flow1_Step2.png" alt="Step 2: Slide to Check-In" className="journey-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/flow_screens/Flow1_Step2.png" alt="Step 2: Slide to Check-In" className="journey-img" />
                                 </div>
                                 <div className="journey-step-info">
                                     <span className="step-mini-badge gold-badge">STEP 02 • KEY GESTURE</span>
@@ -871,7 +871,7 @@ export default function AttendlyPage() {
                             {/*  Step 3  */}
                             <div className="journey-step-box">
                                 <div className="journey-screen-frame" onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow1_Step3.png', 'EMPLOYEE JOURNEY • STEP 03', '03. Confirm Attendance')} title="Tap to expand screen">
-                                    <img src="/assets/images/attendly/flow_screens/Flow1_Step3.png" alt="Step 3: Confirm Attendance" className="journey-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/flow_screens/Flow1_Step3.png" alt="Step 3: Confirm Attendance" className="journey-img" />
                                 </div>
                                 <div className="journey-step-info">
                                     <span className="step-mini-badge">STEP 03</span>
@@ -897,7 +897,7 @@ export default function AttendlyPage() {
                             {/*  Step 1  */}
                             <div className="journey-step-box">
                                 <div className="journey-screen-frame" onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow2_Step1.png', 'ADMIN JOURNEY • STEP 01', '01. Admin Dashboard')} title="Tap to expand screen">
-                                    <img src="/assets/images/attendly/flow_screens/Flow2_Step1.png" alt="Step 1: Admin Dashboard" className="journey-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/flow_screens/Flow2_Step1.png" alt="Step 1: Admin Dashboard" className="journey-img" />
                                 </div>
                                 <div className="journey-step-info">
                                     <span className="step-mini-badge admin-badge">STEP 01</span>
@@ -911,7 +911,7 @@ export default function AttendlyPage() {
                             {/*  Step 2  */}
                             <div className="journey-step-box featured-step">
                                 <div className="journey-screen-frame" onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow2_Step2.png', 'ADMIN JOURNEY • STEP 02', '02. Leave Requests Queue')} title="Tap to expand screen">
-                                    <img src="/assets/images/attendly/flow_screens/Flow2_Step2.png" alt="Step 2: Leave Requests Queue" className="journey-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/flow_screens/Flow2_Step2.png" alt="Step 2: Leave Requests Queue" className="journey-img" />
                                 </div>
                                 <div className="journey-step-info">
                                     <span className="step-mini-badge blue-badge">STEP 02 • ONE-TAP DECISION</span>
@@ -925,7 +925,7 @@ export default function AttendlyPage() {
                             {/*  Step 3  */}
                             <div className="journey-step-box">
                                 <div className="journey-screen-frame" onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow2_Step3.png', 'ADMIN JOURNEY • STEP 03', '03. Employee Performance Report')} title="Tap to expand screen">
-                                    <img src="/assets/images/attendly/flow_screens/Flow2_Step3.png" alt="Step 3: Employee Performance Report" className="journey-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/flow_screens/Flow2_Step3.png" alt="Step 3: Employee Performance Report" className="journey-img" />
                                 </div>
                                 <div className="journey-step-info">
                                     <span className="step-mini-badge admin-badge">STEP 03</span>
@@ -1021,35 +1021,35 @@ export default function AttendlyPage() {
                             <div className="sg-icon-subhead">App Vector Icons</div>
                             <div className="sg-icon-row">
                                 <div className="sg-icon-tile" title="Dashboard">
-                                    <img src="/assets/images/attendly/svg/Dashboard ICON.svg" alt="Dashboard Icon" className="dark-theme-svg" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/svg/Dashboard ICON.svg" alt="Dashboard Icon" className="dark-theme-svg" />
                                     <span>Dashboard</span>
                                 </div>
                                 <div className="sg-icon-tile" title="Calendar">
-                                    <img src="/assets/images/attendly/svg/Calendar.svg" alt="Calendar Icon" className="dark-theme-svg" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/svg/Calendar.svg" alt="Calendar Icon" className="dark-theme-svg" />
                                     <span>Calendar</span>
                                 </div>
                                 <div className="sg-icon-tile" title="Notification">
-                                    <img src="/assets/images/attendly/svg/Notification.svg" alt="Notification Icon" className="dark-theme-svg" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/svg/Notification.svg" alt="Notification Icon" className="dark-theme-svg" />
                                     <span>Alerts</span>
                                 </div>
                                 <div className="sg-icon-tile" title="Office">
-                                    <img src="/assets/images/attendly/svg/Office.svg" alt="Office Icon" className="dark-theme-svg" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/svg/Office.svg" alt="Office Icon" className="dark-theme-svg" />
                                     <span>Office</span>
                                 </div>
                                 <div className="sg-icon-tile" title="Reminder">
-                                    <img src="/assets/images/attendly/svg/Reminder.svg" alt="Reminder Icon" className="dark-theme-svg" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/svg/Reminder.svg" alt="Reminder Icon" className="dark-theme-svg" />
                                     <span>Reminder</span>
                                 </div>
                                 <div className="sg-icon-tile" title="Settings">
-                                    <img src="/assets/images/attendly/svg/Settings.svg" alt="Settings Icon" className="dark-theme-svg" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/svg/Settings.svg" alt="Settings Icon" className="dark-theme-svg" />
                                     <span>Settings</span>
                                 </div>
                                 <div className="sg-icon-tile" title="Search">
-                                    <img src="/assets/images/attendly/svg/search.svg" alt="Search Icon" className="dark-theme-svg" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/svg/search.svg" alt="Search Icon" className="dark-theme-svg" />
                                     <span>Search</span>
                                 </div>
                                 <div className="sg-icon-tile" title="Filter">
-                                    <img src="/assets/images/attendly/svg/FIlter.svg" alt="Filter Icon" className="dark-theme-svg" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/svg/FIlter.svg" alt="Filter Icon" className="dark-theme-svg" />
                                     <span>Filter</span>
                                 </div>
                             </div>
@@ -1072,7 +1072,7 @@ export default function AttendlyPage() {
                 <div className="cs-dark-grid-3">
                     <div className="cs-dark-card impact-visual-card">
                         <div className="impact-image-container">
-                            <img src="/assets/images/attendly/source/DesignImpact_1.png" alt="Reduced interaction to a single gesture" className="impact-img" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/DesignImpact_1.png" alt="Reduced interaction to a single gesture" className="impact-img" />
                         </div>
                         <div className="impact-meta">
                             <div className="impact-metric">1.2s</div>
@@ -1083,7 +1083,7 @@ export default function AttendlyPage() {
 
                     <div className="cs-dark-card impact-visual-card">
                         <div className="impact-image-container">
-                            <img src="/assets/images/attendly/source/DesignImpact_2.png" alt="Built two report experiences from one data model" className="impact-img" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/DesignImpact_2.png" alt="Built two report experiences from one data model" className="impact-img" />
                         </div>
                         <div className="impact-meta">
                             <div className="impact-metric">2-in-1</div>
@@ -1094,7 +1094,7 @@ export default function AttendlyPage() {
 
                     <div className="cs-dark-card impact-visual-card">
                         <div className="impact-image-container">
-                            <img src="/assets/images/attendly/source/DesignImpact_3.png" alt="Shipped a complete working product" className="impact-img" />
+                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/DesignImpact_3.png" alt="Shipped a complete working product" className="impact-img" />
                         </div>
                         <div className="impact-meta">
                             <div className="impact-metric">35</div>
@@ -1245,7 +1245,7 @@ export default function AttendlyPage() {
     <div className="cs-lightbox-modal" id="cs-lightbox" onClick={() => { closeLightbox() }}>
         <div className="lightbox-content">
             <button className="lightbox-close-btn" onClick={() => { closeLightbox() }}>✕ Close</button>
-            <img src="" alt="Expanded Wireframe Screen" id="lightbox-img" />
+            <img loading="lazy" decoding="async" src="" alt="Expanded Wireframe Screen" id="lightbox-img" />
             <div className="lightbox-caption" id="lightbox-caption">
                 <span className="lb-badge" id="lb-badge"></span>
                 <h4 id="lb-title"></h4>
@@ -1262,7 +1262,7 @@ export default function AttendlyPage() {
         <div className="cs-lightbox-overlay active" onClick={closeLightbox}>
           <div className="cs-lightbox-content" onClick={(e) => e.stopPropagation()}>
             <button className="cs-lightbox-close" onClick={closeLightbox} aria-label="Close lightbox">&times;</button>
-            <img src={lightboxSrc} alt={lightboxTitle} className="cs-lightbox-img" />
+            <img loading="lazy" decoding="async" src={lightboxSrc} alt={lightboxTitle} className="cs-lightbox-img" />
             {lightboxTitle && <p className="cs-lightbox-title">{lightboxTitle}</p>}
             {lightboxSub && <p className="cs-lightbox-sub">{lightboxSub}</p>}
           </div>

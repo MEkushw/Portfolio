@@ -101,7 +101,7 @@ export default function RevSyncPage() {
 
                         <div className="hero-visual-col">
                             <div className="cs-image-frame revsync-hero-visual-frame" onClick={() => openLightbox('/assets/images/revsync/source/Hero_Image.png', 'REVSYNC • HERO', 'Sales CRM Control Center Dashboard')}>
-                                <img src="/assets/images/revsync/source/Hero_Image.png" alt="RevSync Web CRM Dashboard Mockup" className="cs-image" />
+                                <img loading="lazy" decoding="async" src="/assets/images/revsync/source/Hero_Image.png" alt="RevSync Web CRM Dashboard Mockup" className="cs-image" />
                             </div>
                         </div>
                     </div>
@@ -768,7 +768,7 @@ export default function RevSyncPage() {
         <section id="wireframes" className="cs-section">
             <div className="cs-section-inner">
                 <div className="revsync-lofi-hero-frame" onClick={() => openLightbox('/assets/images/revsync/Lo-Fi Wireframes.png', 'LOW FIDELITY WIREFRAMES', 'Structural sketches to validate decision &amp; information hierarchy')} title="Tap to view full screen">
-                    <img src="/assets/images/revsync/Lo-Fi Wireframes.png" alt="Low Fidelity Wireframes Frame" className="lofi-hero-img" />
+                    <img loading="lazy" decoding="async" src="/assets/images/revsync/Lo-Fi Wireframes.png" alt="Low Fidelity Wireframes Frame" className="lofi-hero-img" />
                 </div>
             </div>
         </section>
@@ -803,7 +803,7 @@ export default function RevSyncPage() {
                             <p className="sol-card-sub">Org-wide KPIs at login — replaces opening every rep's file.</p>
                             <div className="sol-img-frame" onClick={() => openLightbox('/assets/images/revsync/source/Dashboard_Hi-Fi_Wireframe.png', 'DASHBOARD • ADMIN VIEW', 'Org-wide KPIs at login')}>
                                 <div className="sol-green-border-wrapper">
-                                    <img src="/assets/images/revsync/source/Dashboard_Hi-Fi_Wireframe.png" alt="Dashboard Hi-Fi Wireframe" className="sol-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/source/Dashboard_Hi-Fi_Wireframe.png" alt="Dashboard Hi-Fi Wireframe" className="sol-img" />
                                 </div>
                             </div>
                         </div>
@@ -822,7 +822,7 @@ export default function RevSyncPage() {
                             <p className="sol-card-sub">One import replaces 4-step manual handoff chain.</p>
                             <div className="sol-img-frame" onClick={() => openLightbox('/assets/images/revsync/source/LeadsImport_Hi-Fi_Wireframe.png', 'LEADS IMPORT • TEAM LEADER VIEW', 'One import replaces 4-step manual handoff chain')}>
                                 <div className="sol-green-border-wrapper">
-                                    <img src="/assets/images/revsync/source/LeadsImport_Hi-Fi_Wireframe.png" alt="Leads Import Hi-Fi Wireframe" className="sol-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/source/LeadsImport_Hi-Fi_Wireframe.png" alt="Leads Import Hi-Fi Wireframe" className="sol-img" />
                                 </div>
                             </div>
                         </div>
@@ -841,7 +841,7 @@ export default function RevSyncPage() {
                             <p className="sol-card-sub">Full lead history — no more info trapped in one person.</p>
                             <div className="sol-img-frame" onClick={() => openLightbox('/assets/images/revsync/source/LeadDetail_Hi-Fi_Wireframe.png', 'LEAD DETAIL • REP VIEW', 'Full lead history and timeline')}>
                                 <div className="sol-green-border-wrapper">
-                                    <img src="/assets/images/revsync/source/LeadDetail_Hi-Fi_Wireframe.png" alt="Lead Detail Hi-Fi Wireframe" className="sol-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/source/LeadDetail_Hi-Fi_Wireframe.png" alt="Lead Detail Hi-Fi Wireframe" className="sol-img" />
                                 </div>
                             </div>
                         </div>
@@ -860,7 +860,7 @@ export default function RevSyncPage() {
                             <p className="sol-card-sub">Select, assign, done — no more splitting CSV rows by hand.</p>
                             <div className="sol-img-frame" onClick={() => openLightbox('/assets/images/revsync/source/AssignLeads_Hi-Fi_Wireframe.png', 'ASSIGN LEADS • TEAM LEADER VIEW', 'Select, assign, done')}>
                                 <div className="sol-green-border-wrapper">
-                                    <img src="/assets/images/revsync/source/AssignLeads_Hi-Fi_Wireframe.png" alt="Assign Leads Hi-Fi Wireframe" className="sol-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/source/AssignLeads_Hi-Fi_Wireframe.png" alt="Assign Leads Hi-Fi Wireframe" className="sol-img" />
                                 </div>
                             </div>
                         </div>
@@ -973,7 +973,7 @@ export default function RevSyncPage() {
         <div className="cs-lightbox-overlay active" onClick={closeLightbox}>
           <div className="cs-lightbox-content" onClick={(e) => e.stopPropagation()}>
             <button className="cs-lightbox-close" onClick={closeLightbox} aria-label="Close lightbox">&times;</button>
-            <img src={lightboxSrc} alt={lightboxTitle} className="cs-lightbox-img" />
+            <img loading="lazy" decoding="async" src={lightboxSrc} alt={lightboxTitle} className="cs-lightbox-img" />
             {lightboxTitle && <p className="cs-lightbox-title">{lightboxTitle}</p>}
             {lightboxSub && <p className="cs-lightbox-sub">{lightboxSub}</p>}
           </div>

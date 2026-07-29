@@ -53,54 +53,112 @@ export default function AttendlyPage() {
   }, []);
 
 
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [activeHiFi, setActiveHiFi] = useState(0);
+    const [screenMode, setScreenMode] = useState<'hifi' | 'lofi'>('hifi');
+  const [screenIndex, setScreenIndex] = useState(0);
 
-  const navInspector = useCallback((type: string, dir: number) => {
-    setActiveHiFi(prev => {
-      const next = (prev + dir + 8) % 8;
-      selectHiFi(next);
-      return next;
-    });
-  }, []);
+  const hifiScreens = [
+  {
+    "img": "/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png",
+    "badge": "EMPLOYEE HUB • WF-01",
+    "title": "01. Attendance",
+    "desc": "High-contrast dark mode dashboard giving staff instant visibility over daily attendance status, shift timer, and slide check-in timestamp."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Hi-Fi_Wireframe_3.png",
+    "badge": "EMPLOYEE HUB • WF-02",
+    "title": "02. Notifications",
+    "desc": "Real-time alert center feeding push updates for shift changes, manager announcements, and approved leave status."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Hi-Fi_Wireframe_4.png",
+    "badge": "EMPLOYEE HUB • WF-03",
+    "title": "03. Leave Requests",
+    "desc": "2-tap leave submission workflow with date pickers, reason tags, and real-time manager approval status."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Hi-Fi_Wireframe_6.png",
+    "badge": "EMPLOYEE HUB • WF-04",
+    "title": "04. Employee Performance",
+    "desc": "Monthly performance rating card, total logged hours, punctuality metrics, and work shift breakdown."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Hi-Fi_Wireframe_9.png",
+    "badge": "ADMIN HUB • WF-05",
+    "title": "05. Admin Dashboard",
+    "desc": "Director & Admin portal presenting live headcount %, delayed arrivals list, and quick manager actions."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Hi-Fi_Wireframe_5.png",
+    "badge": "ADMIN HUB • WF-06",
+    "title": "06. Latecomers Report",
+    "desc": "Automated late arrival tracking with time delay logs and direct one-click WhatsApp check-in reminders."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Hi-Fi_Wireframe_7.png",
+    "badge": "ADMIN HUB • WF-07",
+    "title": "07. Admin Performance",
+    "desc": "Organization-wide team productivity analytics, shift compliance metrics, and monthly report exports."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Hi-Fi_Wireframe_8.png",
+    "badge": "SYSTEM • WF-08",
+    "title": "08. 404 Error State",
+    "desc": "Friendly empty/error state vector illustration keeping user experience polished even during network drops."
+  }
+];
+  const lofiScreens = [
+  {
+    "img": "/assets/images/attendly/Source/Lo-Fi_Wireframe_1.png",
+    "badge": "LO-FI • WF-01",
+    "title": "01. Employee Dashboard",
+    "desc": "Initial spatial layout exploring one-thumb check-in button placement and top status header."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Lo-Fi_Wireframe_2.png",
+    "badge": "LO-FI • WF-02",
+    "title": "02. Attendance Log",
+    "desc": "Wireframe structure for daily attendance history logs and monthly calendar overview."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Lo-Fi_Wireframe_3.png",
+    "badge": "LO-FI • WF-03",
+    "title": "03. Tasks Management",
+    "desc": "Low-fidelity layout for daily task assignments, progress checkboxes, and priority tags."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Lo-Fi_Wireframe_4.png",
+    "badge": "LO-FI • WF-04",
+    "title": "04. Leave Requests",
+    "desc": "Early UX flow testing leave request form input hierarchy and manager response states."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Lo-Fi_Wireframe_5.png",
+    "badge": "LO-FI • WF-05",
+    "title": "05. Notifications Feed",
+    "desc": "Wireframe card layout for notification stream and announcement priority banners."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Lo-Fi_Wireframe_8.png",
+    "badge": "LO-FI • WF-06",
+    "title": "06. Admin Dashboard",
+    "desc": "Exploring administrative metric cards, team attendance progress rings, and quick actions."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Lo-Fi_Wireframe_6.png",
+    "badge": "LO-FI • WF-07",
+    "title": "07. Assign Tasks",
+    "desc": "Wireframe workflow for directors to assign daily tasks to specific team members."
+  },
+  {
+    "img": "/assets/images/attendly/Source/Lo-Fi_Wireframe_7.png",
+    "badge": "LO-FI • WF-08",
+    "title": "08. Employee Performance",
+    "desc": "Early concept for team rating summaries and monthly punctuality scorecards."
+  }
+];
 
-  const filterHiFi = useCallback((category: string) => {
-    setActiveFilter(category);
-    // Show/hide cards based on category
-    setTimeout(() => {
-      document.querySelectorAll('.thumb-card').forEach((card) => {
-        const el = card as HTMLElement;
-        if (category === 'all' || el.dataset.cat === category) {
-          el.style.display = '';
-        } else {
-          el.style.display = 'none';
-        }
-      });
-      // Update active tab button
-      document.querySelectorAll('.hifi-tab-btn').forEach((btn, i) => {
-        btn.classList.remove('active');
-      });
-    }, 0);
-  }, []);
-
-  const selectHiFi = useCallback((index: number) => {
-    setActiveHiFi(index);
-    // Update active thumbnail
-    setTimeout(() => {
-      document.querySelectorAll('.thumb-card').forEach((card, i) => {
-        card.classList.toggle('active', i === index);
-      });
-      // Update main preview image
-      const activeCard = document.querySelectorAll('.thumb-card')[index];
-      if (activeCard) {
-        const img = activeCard.querySelector('img') as HTMLImageElement;
-        const mainImg = document.querySelector('.stage-frame img') as HTMLImageElement;
-        if (img && mainImg) {
-          mainImg.src = img.src.replace('_thumb', '');
-        }
-      }
-    }, 0);
-  }, []);
+  const activeScreens = screenMode === 'hifi' ? hifiScreens : lofiScreens;
+  const currentScreen = activeScreens[screenIndex] || activeScreens[0];
 
   // Escape key closes lightbox
   useEffect(() => {
@@ -647,176 +705,82 @@ export default function AttendlyPage() {
         </section>
 
 
-        {/*  ================= 06. LO-FI WIREFRAMES =================  */}
+                {/*  ================= 06. WIREFRAMES & UI SCREENS =================  */}
         <section id="lo-fi" className="cs-section">
             <div className="cs-section-inner">
                 <div className="cs-section-header">
                     <span className="cs-step-num">06</span>
-                    <h2 className="cs-step-title">Lo-Fi Wireframes</h2>
+                    <h2 className="cs-step-title">Wireframes &amp; UI Screens Showcase</h2>
                 </div>
-                <p className="cs-section-subtitle">Iterating rapidly on spatial layout, navigation hierarchy, and one-hand touch ergonomics.</p>
+                <p className="cs-section-subtitle">Switch seamlessly between Hi-Fi polished UI interfaces and initial Lo-Fi structural wireframes.</p>
 
-                {/*  Lo-Fi Wireframe Showcase Gallery (Clean 8-Card Grid)  */}
-                <div className="lofi-gallery-grid">
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_1.png', 'LO-FI WIREFRAME • 01', '01. Employee Dashboard')}>
-                        <div className="lofi-img-frame">
-                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_1.png" alt="Employee Dashboard Wireframe" />
-                        </div>
-                        <div className="lofi-card-meta">
-                            <span className="lofi-badge">EMPLOYEE • WF-01</span>
-                            <h4>01. Employee Dashboard</h4>
-                        </div>
-                    </div>
-
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_2.png', 'LO-FI WIREFRAME • 02', '02. Attendance Log')}>
-                        <div className="lofi-img-frame">
-                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_2.png" alt="Attendance Wireframe" />
-                        </div>
-                        <div className="lofi-card-meta">
-                            <span className="lofi-badge">EMPLOYEE • WF-02</span>
-                            <h4>02. Attendance</h4>
-                        </div>
-                    </div>
-
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_3.png', 'LO-FI WIREFRAME • 03', '03. Tasks Management')}>
-                        <div className="lofi-img-frame">
-                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_3.png" alt="Tasks Wireframe" />
-                        </div>
-                        <div className="lofi-card-meta">
-                            <span className="lofi-badge">EMPLOYEE • WF-03</span>
-                            <h4>03. Tasks</h4>
-                        </div>
-                    </div>
-
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_4.png', 'LO-FI WIREFRAME • 04', '04. Leave Requests')}>
-                        <div className="lofi-img-frame">
-                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_4.png" alt="Leave Requests Wireframe" />
-                        </div>
-                        <div className="lofi-card-meta">
-                            <span className="lofi-badge">EMPLOYEE • WF-04</span>
-                            <h4>04. Leave Requests</h4>
-                        </div>
-                    </div>
-
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_5.png', 'LO-FI WIREFRAME • 05', '05. Notifications Feed')}>
-                        <div className="lofi-img-frame">
-                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_5.png" alt="Notifications Wireframe" />
-                        </div>
-                        <div className="lofi-card-meta">
-                            <span className="lofi-badge">EMPLOYEE • WF-05</span>
-                            <h4>05. Notifications</h4>
-                        </div>
-                    </div>
-
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_8.png', 'LO-FI WIREFRAME • 06', '06. Admin Dashboard')}>
-                        <div className="lofi-img-frame">
-                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_8.png" alt="Admin Dashboard Wireframe" />
-                        </div>
-                        <div className="lofi-card-meta">
-                            <span className="lofi-badge admin-lofi-badge">ADMIN • WF-06</span>
-                            <h4>06. Admin Dashboard</h4>
-                        </div>
-                    </div>
-
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_6.png', 'LO-FI WIREFRAME • 07', '07. Assign Tasks')}>
-                        <div className="lofi-img-frame">
-                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_6.png" alt="Assign Tasks Wireframe" />
-                        </div>
-                        <div className="lofi-card-meta">
-                            <span className="lofi-badge admin-lofi-badge">ADMIN • WF-07</span>
-                            <h4>07. Assign Tasks</h4>
-                        </div>
-                    </div>
-
-                    <div className="lofi-card" onClick={() => openLightbox('/assets/images/attendly/Source/Lo-Fi_Wireframe_7.png', 'LO-FI WIREFRAME • 08', '08. Employee Performance')}>
-                        <div className="lofi-img-frame">
-                            <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Lo-Fi_Wireframe_7.png" alt="Employee Performance Wireframe" />
-                        </div>
-                        <div className="lofi-card-meta">
-                            <span className="lofi-badge admin-lofi-badge">ADMIN • WF-08</span>
-                            <h4>08. Employee Performance</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        {/*  ================= 07. HI-FI DESIGNS =================  */}
-        <section id="hi-fi" className="cs-section">
-            <div className="cs-section-inner">
-                <div className="cs-section-header">
-                    <span className="cs-step-num">07</span>
-                    <h2 className="cs-step-title">Hi-Fi UI Screens</h2>
-                </div>
-                <p className="cs-section-subtitle">Final polished interfaces — dark mode, high contrast, optimized for OLED displays.</p>
-
-                {/*  Category Filter Pills  */}
-                <div className="hifi-filter-tabs margin-bottom-20">
-                    <button className="hifi-tab-btn active" onClick={() => { filterHiFi('all') }}>All Hi-Fi Screens (8)</button>
-                    <button className="hifi-tab-btn" onClick={() => { filterHiFi('employee') }}>Employee Flow (4)</button>
-                    <button className="hifi-tab-btn" onClick={() => { filterHiFi('admin') }}>Admin &amp; System (4)</button>
+                {/* Mode Selector Toggle Pills */}
+                <div className="wireframe-mode-toggle">
+                    <button 
+                        className={`mode-toggle-btn ${screenMode === 'hifi' ? 'active' : ''}`}
+                        onClick={() => { setScreenMode('hifi'); setScreenIndex(0); }}
+                    >
+                        <span>📱 Hi-Fi UI Screens (8)</span>
+                    </button>
+                    <button 
+                        className={`mode-toggle-btn ${screenMode === 'lofi' ? 'active' : ''}`}
+                        onClick={() => { setScreenMode('lofi'); setScreenIndex(0); }}
+                    >
+                        <span>✏️ Lo-Fi Wireframes (8)</span>
+                    </button>
                 </div>
 
-                {/*  Interactive Dual-Pane Inspector (Compact ~480px height - NO scrollbars)  */}
+                {/* Main Interactive Stage & Selector Container */}
                 <div className="cs-dark-card inspector-card" id="hifi-inspector">
                     <div className="inspector-layout">
-                        {/*  Featured Stage (Left)  */}
+                        {/* Featured Stage (Left) */}
                         <div className="inspector-stage">
-                            <div className="stage-frame hifi-frame" onClick={() => { openLightbox('/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png', 'Hi-Fi Featured Screen', 'Attendance') }} title="Tap to view full screen">
-                                <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png" alt="Hi-Fi Featured Screen" id="hifi-stage-img" className="stage-img" />
+                            <div 
+                                className="stage-frame hifi-frame" 
+                                onClick={() => openLightbox(currentScreen.img, `${screenMode.toUpperCase()} SCREEN • 0${screenIndex + 1}`, currentScreen.title)} 
+                                title="Tap to view full screen"
+                            >
+                                <img loading="lazy" decoding="async" src={currentScreen.img} alt={currentScreen.title} className="stage-img" />
                             </div>
                             <div className="stage-details">
                                 <div className="stage-badge-row">
-                                    <span className="stage-badge hifi-badge" id="hifi-stage-badge">EMPLOYEE HUB • WF-01</span>
-                                    <span className="stage-counter" id="hifi-stage-counter">1 of 8</span>
+                                    <span className="stage-badge hifi-badge">{currentScreen.badge}</span>
+                                    <span className="stage-counter">{screenIndex + 1} of 8</span>
                                 </div>
-                                <h3 className="stage-title" id="hifi-stage-title">Attendance</h3>
-                                <p className="stage-desc" id="hifi-stage-desc">High-contrast dark mode dashboard giving staff instant visibility over daily attendance status, shift timer, and slide check-in timestamp.</p>
+                                <h3 className="stage-title">{currentScreen.title}</h3>
+                                <p className="stage-desc">{currentScreen.desc}</p>
 
                                 <div className="stage-nav-btns">
-                                    <button className="stage-nav-btn" onClick={() => { navInspector('hifi', -1) }}>← Previous</button>
-                                    <button className="stage-nav-btn" onClick={() => { navInspector('hifi', 1) }}>Next Screen →</button>
+                                    <button 
+                                        className="stage-nav-btn" 
+                                        onClick={() => setScreenIndex(prev => (prev === 0 ? 7 : prev - 1))}
+                                    >
+                                        ← Previous
+                                    </button>
+                                    <button 
+                                        className="stage-nav-btn" 
+                                        onClick={() => setScreenIndex(prev => (prev === 7 ? 0 : prev + 1))}
+                                    >
+                                        Next Screen →
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
-                        {/*  Thumbnail Grid Selector (Right)  */}
+                        {/* Thumbnail Grid Selector (Right) */}
                         <div className="inspector-selector">
-                            <h4 className="selector-heading">Select UI Screen (8 Screens)</h4>
-                            <div className="thumb-grid" id="hifi-thumb-grid">
-                                <div className="thumb-card active" data-cat="employee" onClick={() => selectHiFi(0)}>
-                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png" alt="Attendance" />
-                                    <span>01. Attendance</span>
-                                </div>
-                                <div className="thumb-card" data-cat="employee" onClick={() => selectHiFi(1)}>
-                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_3.png" alt="Notifications" />
-                                    <span>02. Notifications</span>
-                                </div>
-                                <div className="thumb-card" data-cat="employee" onClick={() => selectHiFi(2)}>
-                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_4.png" alt="Leave Requests" />
-                                    <span>03. Leave Req</span>
-                                </div>
-                                <div className="thumb-card" data-cat="employee" onClick={() => selectHiFi(3)}>
-                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_6.png" alt="Employee Performance" />
-                                    <span>04. Emp Report</span>
-                                </div>
-                                <div className="thumb-card" data-cat="admin" onClick={() => selectHiFi(4)}>
-                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_9.png" alt="Admin Dashboard" />
-                                    <span>05. Admin Dash</span>
-                                </div>
-                                <div className="thumb-card" data-cat="admin" onClick={() => selectHiFi(5)}>
-                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_5.png" alt="Latecomers Report" />
-                                    <span>06. Latecomers</span>
-                                </div>
-                                <div className="thumb-card" data-cat="admin" onClick={() => selectHiFi(6)}>
-                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_7.png" alt="Admin Employee Performance" />
-                                    <span>07. Admin Perf</span>
-                                </div>
-                                <div className="thumb-card" data-cat="admin" onClick={() => selectHiFi(7)}>
-                                    <img loading="lazy" decoding="async" src="/assets/images/attendly/Source/Hi-Fi_Wireframe_8.png" alt="404 Error State" />
-                                    <span>08. 404 Error</span>
-                                </div>
+                            <h4 className="selector-heading">Select Screen ({activeScreens.length} Screens)</h4>
+                            <div className="thumb-grid">
+                                {activeScreens.map((item, idx) => (
+                                    <div 
+                                        key={idx} 
+                                        className={`thumb-card ${screenIndex === idx ? 'active' : ''}`} 
+                                        onClick={() => setScreenIndex(idx)}
+                                    >
+                                        <img loading="lazy" decoding="async" src={item.img} alt={item.title} />
+                                        <span>{item.title}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -825,7 +789,7 @@ export default function AttendlyPage() {
         </section>
 
 
-        {/*  ================= 08. CORE USER JOURNEYS =================  */}
+        {/*  ================= 07. CORE USER JOURNEYS =================  */}
         <section id="hi-fi-2" className="cs-section">
             <div className="cs-section-inner">
                 <div className="cs-section-header">

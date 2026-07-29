@@ -161,7 +161,6 @@ export default function HomePage() {
           <div className="nav-links">
             <a href="#case-studies" className="nav-link" onClick={(e) => handleAnchorClick(e, '#case-studies')}>WORKS</a>
             <a href="#about" className="nav-link" onClick={(e) => handleAnchorClick(e, '#about')}>ABOUT</a>
-            <a href="https://drive.google.com/drive/folders/1g7YznCz4lMgDVaWrqk4Cp38cFIs0JbNJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="nav-link">RESUME</a>
           </div>
           <div className="nav-socials">
             <a href="https://www.linkedin.com/in/omkushwaha" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn" id="social-linkedin"><LinkedInIcon /></a>
@@ -180,7 +179,6 @@ export default function HomePage() {
           <div className="mobile-menu-inner">
             <a href="#case-studies" className="mobile-menu-link" onClick={(e) => handleAnchorClick(e, '#case-studies')}>WORKS</a>
             <a href="#about" className="mobile-menu-link" onClick={(e) => handleAnchorClick(e, '#about')}>ABOUT</a>
-            <a href="https://drive.google.com/drive/folders/1g7YznCz4lMgDVaWrqk4Cp38cFIs0JbNJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="mobile-menu-link">RESUME</a>
             <div className="mobile-menu-divider" />
             <div className="mobile-menu-socials">
               <a href="https://www.linkedin.com/in/omkushwaha" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><LinkedInIcon size={18} /></a>
@@ -362,7 +360,6 @@ export default function HomePage() {
               <div className="footer-nav">
                 <a href="#case-studies" className="footer-link" onClick={(e) => handleAnchorClick(e, '#case-studies')}>WORKS</a>
                 <a href="#about" className="footer-link" onClick={(e) => handleAnchorClick(e, '#about')}>ABOUT</a>
-                <a href="https://drive.google.com/drive/folders/1g7YznCz4lMgDVaWrqk4Cp38cFIs0JbNJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">RESUME</a>
               </div>
               <span className="footer-copy">COPYRIGHT@2026_OMKUSHW</span>
             </div>

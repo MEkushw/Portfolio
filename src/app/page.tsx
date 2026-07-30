@@ -4,128 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 
 
-function ParticleBanner({ src, alt }: { src: string; alt: string }) {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isTouching, setIsTouching] = useState(false);
-  const particlesRef = useRef<
-    {
-      x: number;
-      y: number;
-      ox: number;
-      oy: number;
-      vx: number;
-      vy: number;
-      color: string;
-      size: number;
-    }[]
-  >([]);
-  const animFrameRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.src = src;
-
-    img.onload = () => {
-      const w = canvas.parentElement?.clientWidth || 800;
-      const h = (img.height / img.width) * w;
-      canvas.width = w;
-      canvas.height = h;
-
-      const offCanvas = document.createElement('canvas');
-      offCanvas.width = w;
-      offCanvas.height = h;
-      const offCtx = offCanvas.getContext('2d');
-      if (!offCtx) return;
-
-      offCtx.drawImage(img, 0, 0, w, h);
-      const imgData = offCtx.getImageData(0, 0, w, h).data;
-
-      const step = Math.max(6, Math.floor(w / 70));
-      const newParticles = [];
-
-      for (let y = 0; y < h; y += step) {
-        for (let x = 0; x < w; x += step) {
-          const idx = (y * w + x) * 4;
-          const a = imgData[idx + 3];
-          if (a > 50) {
-            const r = imgData[idx];
-            const g = imgData[idx + 1];
-            const b = imgData[idx + 2];
-            newParticles.push({
-              x,
-              y,
-              ox: x,
-              oy: y,
-              vx: (Math.random() - 0.5) * 6,
-              vy: (Math.random() - 0.5) * 6,
-              color: `rgba(${r},${g},${b},${a / 255})`,
-              size: Math.random() * 2.5 + 1.5,
-            });
-          }
-        }
-      }
-      particlesRef.current = newParticles;
-    };
-
-    let time = 0;
-    const render = () => {
-      time += 0.03;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const active = containerRef.current?.classList.contains('touching');
-
-      particlesRef.current.forEach((p) => {
-        if (active) {
-          p.x += p.vx + Math.sin(time + p.ox) * 0.4;
-          p.y += p.vy + Math.cos(time + p.oy) * 0.4;
-          if (p.x < 0 || p.x > canvas.width) p.vx *= -0.8;
-          if (p.y < 0 || p.y > canvas.height) p.vy *= -0.8;
-        } else {
-          p.x += (p.ox - p.x) * 0.12;
-          p.y += (p.oy - p.y) * 0.12;
-        }
-
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      animFrameRef.current = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-    };
-  }, [src]);
-
-  const handleTouchStart = () => setIsTouching(true);
-  const handleTouchEnd = () => setIsTouching(false);
-
-  return (
-    <div
-      ref={containerRef}
-      className={`about-illustration ${isTouching ? 'touching' : ''}`}
-      onMouseEnter={handleTouchStart}
-      onMouseLeave={handleTouchEnd}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onTouchCancel={handleTouchEnd}
-    >
-      <img src={src} alt={alt} className="about-banner-img" loading="lazy" />
-      <canvas ref={canvasRef} className="about-particle-canvas" />
-    </div>
-  );
-}
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -333,7 +212,7 @@ export default function HomePage() {
             </div>
 
             <div className="hero-status-wrapper">
-              <p className="hero-status hero-status-bottom-left" style={{ color: '#F3B61F' }} ref={heroStatusRef}>CURRENTLY BUILDING ATTENDLY — ATTENDANCE &amp; TASK MANAGEMENT APP FOR SMALL TEAMS...</p>
+              <p className="hero-status hero-status-bottom-left" style={{ color: '#CCF655' }} ref={heroStatusRef}>currently building KrishiNect— Connecting every farmer to the right tool, at the right time.</p>
             </div>
           </div>
         </div>
@@ -426,7 +305,9 @@ export default function HomePage() {
             <blockquote className="about-quote">
               &quot;I&apos;m Om Kushwaha — I used to design mechanisms. Now I design interfaces. Same instinct, different material.&quot;
             </blockquote>
-            <ParticleBanner src="/assets/images/about_banner_exact.png" alt="Om Kushwaha Mechanical to UI Design Watercolor Illustration" />
+            <div className="about-illustration">
+              <img src="/assets/images/about_banner_exact.png" alt="Om Kushwaha Mechanical to UI Design Watercolor Illustration" className="about-banner-img" loading="lazy" />
+            </div>
           </div>
         </div>
       </section>

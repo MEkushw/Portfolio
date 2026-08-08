@@ -1112,7 +1112,10 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     :root { --pad: 32px; }
 
     /* Navbar */
-    .navbar { gap: 32px; padding: 10px 24px; }
+    .grid-nav-time-box { padding: 0 16px; font-size: 12px; }
+    .grid-nav-links-box { padding: 0 18px; gap: 20px; }
+    .grid-nav-logo-box { padding: 0 18px; }
+    .grid-nav-cta-btn { padding: 0 20px; font-size: 12px; }
     
     /* Hero */
     .hero-top-row { gap: 32px; }

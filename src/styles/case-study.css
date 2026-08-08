@@ -8,28 +8,28 @@ body.case-study-page {
     font-family: var(--ff);
 }
 
-/* Floating Smart Back to Homepage CTA */
+/* Floating Smart Back to Homepage CTA - Redesigned Glass Island */
 .cs-back-cta {
     position: fixed;
-    top: 28px;
-    left: 36px;
+    top: 24px;
+    left: 28px;
     z-index: 9999;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    border-radius: 30px;
-    background: rgba(18, 18, 22, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-    color: #FFFFFF;
+    gap: 12px;
+    padding: 8px 20px 8px 10px;
+    border-radius: 40px;
+    background: rgba(15, 15, 20, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    color: #F1F5F9;
     font-family: var(--ff);
     font-size: 13.5px;
     font-weight: 600;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
     text-decoration: none;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     will-change: transform, opacity;
 }
@@ -41,19 +41,62 @@ body.case-study-page {
     pointer-events: none !important;
 }
 
+.cs-back-icon-box {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .cs-back-cta:hover {
+    background: rgba(22, 22, 30, 0.94);
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(255, 255, 255, 0.06);
+    color: #FFFFFF;
+}
+
+.cs-back-cta:hover .cs-back-icon-box {
     background: rgba(230, 57, 70, 0.9);
     border-color: rgba(230, 57, 70, 1);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 36px rgba(230, 57, 70, 0.45);
+    box-shadow: 0 4px 14px rgba(230, 57, 70, 0.4);
+    transform: translateX(-3px);
 }
 
-.cs-back-cta svg {
-    transition: transform 0.3s ease;
+.cs-back-cta:active {
+    transform: translateY(0) scale(0.98);
 }
 
-.cs-back-cta:hover svg {
-    transform: translateX(-4px);
+/* Attendly Signature Glow on Hover */
+.attendly-back-cta:hover .cs-back-icon-box {
+    background: #F3B61F;
+    border-color: #F3B61F;
+    color: #070708;
+    box-shadow: 0 4px 14px rgba(243, 182, 31, 0.45);
+}
+
+.attendly-back-cta:hover {
+    border-color: rgba(243, 182, 31, 0.4);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(243, 182, 31, 0.15);
+}
+
+/* RevSync Signature Glow on Hover */
+.revsync-back-cta:hover .cs-back-icon-box {
+    background: #CCF655;
+    border-color: #CCF655;
+    color: #070708;
+    box-shadow: 0 4px 14px rgba(204, 246, 85, 0.45);
+}
+
+.revsync-back-cta:hover {
+    border-color: rgba(204, 246, 85, 0.4);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(204, 246, 85, 0.15);
 }
 
 /* =============================================
@@ -4954,14 +4997,20 @@ body.revsync-page .f-meta-label {
     }
 }
 
-/* Mobile Responsive Floating Back CTA */
+/* Mobile Responsive Floating Swiss Back CTA */
 @media (max-width: 768px) {
     .cs-back-cta {
         top: 14px !important;
         left: 14px !important;
-        padding: 8px 16px !important;
-        font-size: 12px !important;
-        border-radius: 20px !important;
+        padding: 8px 12px !important;
+        font-size: 11px !important;
+        border-radius: 0px !important;
+        gap: 8px !important;
+        letter-spacing: 0.8px !important;
+    }
+    .cs-swiss-tag {
+        font-size: 10px !important;
+        padding-right: 5px !important;
     }
 }
 

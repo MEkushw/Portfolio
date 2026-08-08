@@ -8,10 +8,28 @@ import Link from 'next/link';
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [timeString, setTimeString] = useState('');
   const lastScrollY = useRef(0);
   const navRef = useRef<HTMLElement>(null);
   const heroStatusRef = useRef<HTMLParagraphElement>(null);
   const typewriterDone = useRef(false);
+
+  // ---- Live Clock ----
+  useEffect(() => {
+    const updateClock = () => {
+      const now = new Date();
+      const formatted = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'Asia/Kolkata',
+      });
+      setTimeString(`${formatted} IST`);
+    };
+    updateClock();
+    const interval = setInterval(updateClock, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // ---- Hamburger Toggle ----
   const toggleMenu = useCallback(() => {
@@ -161,18 +179,37 @@ export default function HomePage() {
         <div className="hero-bg-image" />
         <div className="hero-bg-overlay" />
 
-        {/* Navigation Bar */}
-        <nav className="navbar" id="navbar" ref={navRef}>
-          <span className="nav-logo">OMK<span className="logo-dot">.</span></span>
-          <div className="nav-links">
-            <a href="#case-studies" className="nav-link" onClick={(e) => handleAnchorClick(e, '#case-studies')}>WORKS</a>
-            <a href="#about" className="nav-link" onClick={(e) => handleAnchorClick(e, '#about')}>ABOUT</a>
+        {/* Navigation Bar - Architectural Grid Bar Header */}
+        <nav className="navbar grid-bar-navbar" id="navbar" ref={navRef}>
+          <div className="grid-nav-block grid-nav-logo-box">
+            <span className="nav-logo">OMK<span className="logo-dot">.</span></span>
           </div>
-          <div className="nav-socials">
-            <a href="https://www.linkedin.com/in/omkushwaha" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn" id="social-linkedin"><LinkedInIcon /></a>
-            <a href="https://www.behance.net/mkshw" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Behance" id="social-behance"><BehanceIcon /></a>
-            <a href="https://drive.google.com/drive/folders/1g7YznCz4lMgDVaWrqk4Cp38cFIs0JbNJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Resume" id="social-resume" title="View Resume"><ResumeIcon /></a>
+
+          <div className="grid-nav-block grid-nav-time-box">
+            <span className="live-clock-dot" />
+            <span className="live-clock-text">{timeString || '12:00 AM IST'} • IND</span>
           </div>
+
+          <div className="grid-nav-block grid-nav-links-box">
+            <div className="nav-links">
+              <a href="#case-studies" className="nav-link" onClick={(e) => handleAnchorClick(e, '#case-studies')}>WORKS</a>
+              <a href="#about" className="nav-link" onClick={(e) => handleAnchorClick(e, '#about')}>ABOUT</a>
+            </div>
+            <div className="nav-socials">
+              <a href="https://www.linkedin.com/in/omkushwaha" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn" id="social-linkedin"><LinkedInIcon /></a>
+              <a href="https://www.behance.net/mkshw" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Behance" id="social-behance"><BehanceIcon /></a>
+              <a href="https://drive.google.com/drive/folders/1g7YznCz4lMgDVaWrqk4Cp38cFIs0JbNJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Resume" id="social-resume" title="View Resume"><ResumeIcon /></a>
+            </div>
+          </div>
+
+          <a href="mailto:omkushwaha080105@gmail.com" className="grid-nav-cta-btn" id="grid-nav-contact-btn">
+            <span>Contact</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
           <button className={`hamburger ${menuOpen ? 'active' : ''}`} id="hamburger-btn" aria-label="Menu" onClick={toggleMenu}>
             <span className="hamburger-line" />
             <span className="hamburger-line" />

@@ -172,12 +172,14 @@ export default function AttendlyPage() {
 
 
     {/*  Floating Smart Hide/Show Back CTA  */}
-    <a href="/" ref={backCtaRef} className="cs-back-cta" aria-label="Back to Homepage">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        <span>Back to Homepage</span>
+    <a href="/" ref={backCtaRef} className="cs-back-cta attendly-back-cta" aria-label="Back to Homepage">
+        <span className="cs-back-icon-box">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </span>
+        <span className="cs-back-text">Back to Homepage</span>
     </a>
 
     <main className="cs-container">

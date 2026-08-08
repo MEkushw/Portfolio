@@ -8,10 +8,25 @@ import Link from 'next/link';
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const lastScrollY = useRef(0);
   const navRef = useRef<HTMLElement>(null);
   const heroStatusRef = useRef<HTMLParagraphElement>(null);
   const typewriterDone = useRef(false);
+
+  // ---- Loading Screen Timer ----
+  useEffect(() => {
+    // Lock scroll during loading
+    document.body.style.overflow = 'hidden';
+    const timer = setTimeout(() => {
+      setLoaded(true);
+      document.body.style.overflow = '';
+    }, 3200);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   // ---- Hamburger Toggle ----
   const toggleMenu = useCallback(() => {
@@ -156,6 +171,47 @@ export default function HomePage() {
 
   return (
     <>
+      {/* ===== LOADING SCREEN ===== */}
+      <div className={`loading-screen ${loaded ? 'loaded' : ''}`} id="loading-screen">
+        <div className="loading-inner">
+          {/* Decorative background wavy zigzag line */}
+          <div className="loading-bg-wave">
+            <svg viewBox="0 0 1566 946" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path
+                d="M60 60 L260 886 L460 60 L660 886 L860 60 L1060 886 L1260 60 L1506 886"
+                stroke="rgba(230, 57, 70, 0.09)"
+                strokeWidth="60"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+
+          {/* Name: Om Kushw */}
+          <span className="loading-name">Om</span>
+          <span className="loading-name-kushw">Kushw</span>
+
+          {/* Portfolio — main title */}
+          <h1 className="loading-portfolio">Portfolio</h1>
+
+          {/* Scattered role labels (faded red) */}
+          <span className="loading-product-designer"><span>Product Designer</span></span>
+          <span className="loading-mech-engineer"><span>Mechanical Engineer</span></span>
+          <span className="loading-overthinker"><span>Overthinker</span></span>
+
+          {/* Scroll down indicator */}
+          <div className="loading-scroll-indicator">
+            <span className="loading-scroll-text">Scroll down...</span>
+            <div className="loading-scroll-arrow">
+              <svg viewBox="0 0 27 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5 0 L13.5 64 M3 54 L13.5 68 L24 54" stroke="#E63946" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ===== HERO SECTION ===== */}
       <section id="hero" className="hero">
         <div className="hero-bg-image" />

@@ -179,17 +179,20 @@ export default function HomePage() {
         <div className="hero-bg-image" />
         <div className="hero-bg-overlay" />
 
-        {/* Navigation Bar - Architectural Grid Bar Header */}
+        {/* Global Grid Navigation Bar */}
         <nav className="navbar grid-bar-navbar" id="navbar" ref={navRef}>
+          {/* Box 1: Logo */}
           <div className="grid-nav-block grid-nav-logo-box">
             <span className="nav-logo">OMK<span className="logo-dot">.</span></span>
           </div>
 
+          {/* Box 2: Live Clock Widget */}
           <div className="grid-nav-block grid-nav-time-box">
             <span className="live-clock-dot" />
             <span className="live-clock-text">{timeString || '12:00 AM IST'} • IND</span>
           </div>
 
+          {/* Box 3: Navigation Links + Socials */}
           <div className="grid-nav-block grid-nav-links-box">
             <div className="nav-links">
               <a href="#case-studies" className="nav-link" onClick={(e) => handleAnchorClick(e, '#case-studies')}>WORKS</a>
@@ -202,6 +205,7 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Box 4: Action Block */}
           <a href="mailto:omkushwaha080105@gmail.com" className="grid-nav-cta-btn" id="grid-nav-contact-btn">
             <span>Contact</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -210,6 +214,7 @@ export default function HomePage() {
             </svg>
           </a>
 
+          {/* Mobile Hamburger Toggle Button */}
           <button className={`hamburger ${menuOpen ? 'active' : ''}`} id="hamburger-btn" aria-label="Menu" onClick={toggleMenu}>
             <span className="hamburger-line" />
             <span className="hamburger-line" />
@@ -217,16 +222,18 @@ export default function HomePage() {
           </button>
         </nav>
 
-        {/* Mobile Menu Overlay */}
-        <div className={`mobile-menu ${menuOpen ? 'open' : ''}`} id="mobile-menu" onClick={(e) => { if (e.target === e.currentTarget) closeMenu(); }}>
+        {/* Mobile Fullscreen Menu */}
+        <div className={`mobile-menu ${menuOpen ? 'active' : ''}`} id="mobile-menu">
           <div className="mobile-menu-inner">
-            <a href="#case-studies" className="mobile-menu-link" onClick={(e) => handleAnchorClick(e, '#case-studies')}>WORKS</a>
-            <a href="#about" className="mobile-menu-link" onClick={(e) => handleAnchorClick(e, '#about')}>ABOUT</a>
-            <div className="mobile-menu-divider" />
-            <div className="mobile-menu-socials">
-              <a href="https://www.linkedin.com/in/omkushwaha" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><LinkedInIcon size={18} /></a>
-              <a href="https://www.behance.net/mkshw" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Behance"><BehanceIcon size={18} /></a>
-              <a href="https://drive.google.com/drive/folders/1g7YznCz4lMgDVaWrqk4Cp38cFIs0JbNJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Resume"><ResumeIcon size={18} /></a>
+            <div className="mobile-nav-links">
+              <a href="#case-studies" className="mobile-nav-link" onClick={(e) => handleAnchorClick(e, '#case-studies')}>WORKS</a>
+              <a href="#about" className="mobile-nav-link" onClick={(e) => handleAnchorClick(e, '#about')}>ABOUT</a>
+              <a href="mailto:omkushwaha080105@gmail.com" className="mobile-nav-link" onClick={closeMenu}>CONTACT</a>
+            </div>
+            <div className="mobile-socials">
+              <a href="https://www.linkedin.com/in/omkushwaha" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn" id="mobile-social-linkedin"><LinkedInIcon size={20} /></a>
+              <a href="https://www.behance.net/mkshw" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Behance" id="mobile-social-behance"><BehanceIcon size={20} /></a>
+              <a href="https://drive.google.com/drive/folders/1g7YznCz4lMgDVaWrqk4Cp38cFIs0JbNJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Resume" id="mobile-social-resume" title="View Resume"><ResumeIcon size={20} /></a>
             </div>
           </div>
         </div>
@@ -262,39 +269,61 @@ export default function HomePage() {
             <h2 className="section-title">Case Studies</h2>
           </div>
 
-          {/* Case Study 01 - Attendly */}
-          <div className="case-study-card" id="case-study-1">
-            <div className="cs-info">
-              <div className="cs-header-badge">
-                <span className="cs-number">01</span>
-                <span className="cs-tag">MOBILE APP • HR TECH</span>
-              </div>
-              <h3 className="cs-title">ATTENDLY — ATTENDANCE &amp; TASK MANAGEMENT APP FOR SMALL TEAMS</h3>
-              <p className="cs-desc">Daily HR loop — check in, manage tasks, request leave, stay informed — into a mobile app simple enough for a non-technical office manager to run and fast enough for a mobile-first employee to actually use.</p>
-              <Link href="/attendly" className="cs-btn cs-btn-yellow" id="btn-case-1">
-                <span>View Case Study</span>
-              </Link>
-            </div>
-            <div className="cs-visual cs-visual-attendly" id="cs-visual-1">
-              <img src="/assets/images/casestudy1.png" alt="Attendly Case Study Visual" className="cs-img" />
-            </div>
-          </div>
+          {/* Case Studies Container */}
+          <div className="cs-cards-stack">
+            {/* Case Study 01: RevSync — Clean Minimal Card */}
+            <div className="cs-card-bleed cs-card-revsync" id="case-study-1">
+              <div className="cs-bleed-left">
+                <div className="cs-minimal-meta">
+                  <span className="cs-minimal-num cs-num-cyan">01</span>
+                  <span className="cs-minimal-tag">B2B CRM, Dashboard</span>
+                </div>
 
-          {/* Case Study 02 - RevSync */}
-          <div className="case-study-card cs-card-reverse" id="case-study-2">
-            <div className="cs-visual cs-visual-revsync" id="cs-visual-2">
-              <img src="/assets/images/casestudy2.png" alt="RevSync CRM Case Study Visual" className="cs-img" />
-            </div>
-            <div className="cs-info cs-info-right">
-              <div className="cs-header-badge">
-                <span className="cs-number">02</span>
-                <span className="cs-tag cs-tag-cyan">B2B CRM • DASHBOARD</span>
+                <h3 className="cs-minimal-title">RevSync — a sales CRM for<br className="cs-title-br" />Excel-dependent teams</h3>
+                
+                <p className="cs-minimal-desc">Designed for sales reps, team leaders, and admins to replace<br className="cs-desc-br" />fragmented spreadsheets with real-time pipeline visibility.</p>
+
+                <div className="cs-minimal-link-wrap">
+                  <Link href="/revsync" className="cs-minimal-link cs-link-cyan" id="btn-case-1">
+                    <span>View case study</span>
+                    <span className="cs-minimal-arrow">→</span>
+                  </Link>
+                </div>
               </div>
-              <h3 className="cs-title">REVSYNC— A SALES CRM FOR EXCEL-DEPENDENT TEAMS</h3>
-              <p className="cs-desc">RevSync replaces fragmented Excel-based lead tracking with a CRM that gives sales reps, team leaders, and admins each the exact view of the pipeline they need — nothing more, nothing less.</p>
-              <Link href="/revsync" className="cs-btn cs-btn-cyan" id="btn-case-2">
-                <span>View Case Study</span>
-              </Link>
+
+              <div className="cs-bleed-visual-wrap cs-visual-revsync">
+                <div className="cs-bleed-glow cs-glow-cyan" />
+                <img src="/assets/images/revsync_full_dashboard.png" alt="RevSync Complete Sales CRM Dashboard" className="cs-bleed-img cs-img-revsync" />
+              </div>
+            </div>
+
+            {/* Case Study 02: Attendly — Clean Minimal Card */}
+            <div className="cs-card-bleed cs-card-attendly" id="case-study-2">
+              <div className="cs-bleed-left">
+                <div className="cs-minimal-meta">
+                  <span className="cs-minimal-num cs-num-yellow">02</span>
+                  <span className="cs-minimal-tag">Mobile app, HR tech</span>
+                </div>
+
+                <h3 className="cs-minimal-title">Attendly — zero-friction attendance &amp;<br className="cs-title-br" />task management for small teams</h3>
+                
+                <p className="cs-minimal-desc">Designed for deskless workers and 5–50 person teams to replace<br className="cs-desc-br" />paper registers and missed punches.</p>
+
+                <div className="cs-minimal-link-wrap">
+                  <Link href="/attendly" className="cs-minimal-link cs-link-yellow" id="btn-case-2">
+                    <span>View case study</span>
+                    <span className="cs-minimal-arrow">→</span>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="cs-bleed-visual-wrap cs-visual-attendly">
+                <div className="cs-bleed-glow cs-glow-yellow" />
+                <div className="cs-phones-duo-container">
+                  <img src="/assets/images/attendly_screen_home.png" alt="Attendly Home Attendance UI" className="cs-phone-img cs-phone-back" />
+                  <img src="/assets/images/attendly_screen_leave.png" alt="Attendly Leave Requests UI" className="cs-phone-img cs-phone-front" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

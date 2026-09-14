@@ -10,7 +10,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Om Kushwaha | UX Designer",
+  metadataBase: new URL("https://omkushwaha.design"),
+  title: "Om Kushwaha | Product & UX Designer",
   description:
     "UX designer portfolio showcasing case studies, research, wireframes, prototypes, and outcomes.",
   keywords: [
@@ -23,18 +24,27 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Om Kushwaha" }],
   openGraph: {
-    title: "Om Kushwaha | UX Designer",
+    title: "Om Kushwaha | Product & UX Designer",
     description:
-      "UX designer portfolio showcasing case studies, research, wireframes, prototypes, and outcomes.",
+      "Product & UX designer portfolio showcasing case studies, system architecture, field research, and outcomes.",
     type: "website",
     locale: "en_US",
     siteName: "OMK. Portfolio",
+    images: [
+      {
+        url: "/assets/images/og-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Om Kushwaha - Product & UX Designer Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Om Kushwaha | UX Designer",
+    title: "Om Kushwaha | Product & UX Designer",
     description:
-      "UX designer portfolio showcasing case studies, research, wireframes, prototypes, and outcomes.",
+      "Product & UX designer portfolio showcasing case studies, system architecture, field research, and outcomes.",
+    images: ["/assets/images/og-preview.png"],
   },
   robots: {
     index: true,

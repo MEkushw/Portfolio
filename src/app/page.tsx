@@ -6,13 +6,78 @@ import Link from 'next/link';
 
 
 
+const galleryCardsList = [
+  {
+    id: 'fashion-dual',
+    img: '/assets/images/gallery_card_fashion_dual.png',
+    rawImg: '/assets/images/gallery_card_fashion_dual.png',
+    title: 'Sona.Thrifts — Editorial Kaftan Lookbook & 1-Tap Checkout PDP',
+    category: 'E-COMMERCE • DUAL-SCREEN EDITORIAL & CONVERSION FLOW',
+  },
+  {
+    id: 'red-error',
+    img: '/assets/images/gallery_card_red_framed.png',
+    rawImg: '/assets/images/gallery_card_red_error.png',
+    title: 'Payment & Invoice Error Recovery Flow',
+    category: 'MOBILE APP • REASSURING EMPTY & ERROR STATE',
+  },
+  {
+    id: 'shipping',
+    img: '/assets/images/gallery_card_shipping_framed.png',
+    rawImg: '/assets/images/raw_shipping_dashboard.png',
+    title: 'Freight & Logistics Multi-Carrier Dispatch Control',
+    category: 'WEB SAAS • REAL-TIME SHIPMENT TELEMETRY',
+  },
+  {
+    id: 'employee',
+    img: '/assets/images/gallery_card_employee_framed.png',
+    rawImg: '/assets/images/raw_employee_profile.png',
+    title: 'Field Staff Daily Attendance & Shift Punch Scorecard',
+    category: 'MOBILE APP • DESKLESS WORKFORCE PERFORMANCE',
+  },
+  {
+    id: 'maintenance',
+    img: '/assets/images/gallery_card_maintenance_framed.png',
+    rawImg: '/assets/images/raw_maintenance_card.png',
+    title: 'Industrial Equipment Maintenance Telemetry & Dispatch',
+    category: 'DESKTOP SAAS • OPERATIONAL STATUS & LIVE NODES',
+  },
+  {
+    id: 'trackier',
+    img: '/assets/images/gallery_card_tackier_framed.png',
+    rawImg: '/assets/images/raw_tackier_placements.png',
+    title: 'Performance Marketing Placement & Conversion Audit',
+    category: 'ENTERPRISE SAAS • ATTRIBUTION & PLACEMENT MATRIX',
+  },
+];
+
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [timeString, setTimeString] = useState('');
+  const [galleryLightbox, setGalleryLightbox] = useState<{ src: string; title: string; category: string } | null>(null);
   const lastScrollY = useRef(0);
   const navRef = useRef<HTMLElement>(null);
   const heroStatusRef = useRef<HTMLParagraphElement>(null);
   const typewriterDone = useRef(false);
+
+  // ---- Gallery Lightbox Controls ----
+  const openGalleryLightbox = useCallback((src: string, title: string, category: string) => {
+    setGalleryLightbox({ src, title, category });
+    document.body.style.overflow = 'hidden';
+  }, []);
+
+  const closeGalleryLightbox = useCallback(() => {
+    setGalleryLightbox(null);
+    document.body.style.overflow = '';
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeGalleryLightbox();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [closeGalleryLightbox]);
 
   // ---- Live Clock ----
   useEffect(() => {
@@ -338,18 +403,45 @@ export default function HomePage() {
           <div className="gallery-viewport">
             <div className="gallery-row gallery-row-1">
               <div className="gallery-track gallery-track-left">
-                {[1, 2, 3, 4, 1, 2, 3, 4].map((n, i) => (
-                  <div key={i} className={`gallery-card gc-card-${n}`}>
-                    <img src={`/assets/images/gallery_card${n}.png`} alt={`UI Gallery Card ${n}`} className="gc-img" />
+                {/* Dynamically loops gallery cards across marquee */}
+                {[...galleryCardsList, ...galleryCardsList, ...galleryCardsList, ...galleryCardsList].map((card, i) => (
+                  <div
+                    key={`r1-${i}`}
+                    className={`gallery-card gc-card-${card.id}`}
+                    onClick={() => openGalleryLightbox(card.rawImg || card.img, card.title, card.category)}
+                    title={`Click to inspect: ${card.title}`}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openGalleryLightbox(card.rawImg || card.img, card.title, card.category);
+                      }
+                    }}
+                  >
+                    <img src={card.img} alt={card.title} className="gc-img" />
                   </div>
                 ))}
               </div>
             </div>
             <div className="gallery-row gallery-row-2">
               <div className="gallery-track gallery-track-right">
-                {[5, 6, 7, 5, 6, 7].map((n, i) => (
-                  <div key={i} className={`gallery-card gc-card-${n}`}>
-                    <img src={`/assets/images/gallery_card${n}.png`} alt={`UI Gallery Card ${n}`} className="gc-img" />
+                {[...galleryCardsList.slice().reverse(), ...galleryCardsList.slice().reverse()].map((card, i) => (
+                  <div
+                    key={`r2-${i}`}
+                    className={`gallery-card gc-card-${card.id}`}
+                    onClick={() => openGalleryLightbox(card.rawImg || card.img, card.title, card.category)}
+                    title={`Click to inspect: ${card.title}`}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openGalleryLightbox(card.rawImg || card.img, card.title, card.category);
+                      }
+                    }}
+                  >
+                    <img src={card.img} alt={card.title} className="gc-img" />
                   </div>
                 ))}
               </div>
@@ -438,6 +530,39 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* ===== UI GALLERY LIGHTBOX MODAL ===== */}
+      {galleryLightbox && (
+        <div
+          className="gallery-lightbox-modal active"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeGalleryLightbox();
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={galleryLightbox.title}
+        >
+          <div className="gallery-lightbox-content">
+            <button
+              type="button"
+              className="gallery-lightbox-close-btn"
+              onClick={closeGalleryLightbox}
+              aria-label="Close modal"
+            >
+              <span>✕ Close (ESC)</span>
+            </button>
+            <img
+              src={galleryLightbox.src}
+              alt={galleryLightbox.title}
+              className="gallery-lightbox-img"
+            />
+            <div className="gallery-lightbox-caption">
+              <span className="gallery-lb-badge">{galleryLightbox.category}</span>
+              <h4 className="gallery-lb-title">{galleryLightbox.title}</h4>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -377,7 +377,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     align-items: flex-end;
     width: 100%;
     max-width: 960px;
-    margin-bottom: -32px;
+    margin-bottom: 24px;
     position: relative;
     z-index: 5;
 }
@@ -408,14 +408,16 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
 }
 
 .hero-description {
-    width: 280px;
-    font-size: 19px;
-    font-weight: 300;
-    color: #9E9E9E;
+    width: 380px;
+    max-width: 420px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #D4D4D8;
     text-align: right;
-    line-height: 1.35;
+    line-height: 1.45;
     flex-shrink: 0;
     margin-bottom: 8px;
+    letter-spacing: -0.2px;
 }
 
 /* 3D Pop-Out Hero Stage */
@@ -566,8 +568,8 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
 
 .cs-minimal-tag {
     font-size: 15px;
-    color: #71717A;
-    font-weight: 400;
+    color: #A1A1AA;
+    font-weight: 500;
 }
 
 .cs-minimal-title {
@@ -583,7 +585,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
 
 .cs-minimal-desc {
     font-size: 15.5px;
-    color: #8E8E93;
+    color: #B0B0B8;
     line-height: 1.6;
     max-width: 560px;
     margin-bottom: 32px;
@@ -974,6 +976,137 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     object-fit: cover;
 }
 
+.gallery-viewport:hover .gallery-track {
+    animation-play-state: paused;
+}
+
+.gallery-card {
+    position: relative;
+}
+
+.gallery-card::after {
+    content: 'Click to expand 🔍';
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(10, 10, 14, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-card:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* UI Gallery Lightbox */
+.gallery-lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 8, 0.94);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 24px;
+}
+
+.gallery-lightbox-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.gallery-lightbox-content {
+    position: relative;
+    max-width: min(92vw, 1040px);
+    width: auto;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    animation: lbZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes lbZoomIn {
+    from { transform: scale(0.94); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.gallery-lightbox-close-btn {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.gallery-lightbox-close-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: #FFFFFF;
+}
+
+.gallery-lightbox-img {
+    max-width: 100%;
+    max-height: 76vh;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.gallery-lightbox-caption {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.gallery-lb-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--red);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.gallery-lb-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
 /* =============================================
    ABOUT SECTION
    ============================================= */
@@ -1186,11 +1319,11 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
 
 .info-meta {
     font-family: var(--ff);
-    font-size: 12px;
-    font-weight: 300;
+    font-size: 12.5px;
+    font-weight: 400;
     font-style: italic;
-    color: #777777;
-    line-height: 1.3;
+    color: #D4D4D8;
+    line-height: 1.4;
 }
 
 .info-bold {

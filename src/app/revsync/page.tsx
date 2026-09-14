@@ -83,27 +83,32 @@ export default function RevSyncPage() {
                     <div className="hero-banner-content">
                         <div className="hero-text-col">
                             <div className="cs-badge-row">
-                                <span className="cs-tag-pill revsync-tag-pill">SAAS</span>
+                                <span className="cs-tag-pill revsync-tag-pill">B2B SAAS • CRM ARCHITECTURE</span>
+                                <span className="cs-tag-date" style={{ color: '#A1A1AA', fontSize: '11px', fontWeight: 600, letterSpacing: '1px' }}>CONCEPT STRATEGY • 18 FIELD INTERVIEWS</span>
                             </div>
                             <h1 className="cs-main-title revsync-main-title">Rev<span className="accent-lime">Sync</span></h1>
                             <h2 className="hero-tagline-title">Designing a role-scoped CRM for sales teams running on spreadsheets.</h2>
                             <p className="hero-body-desc">
-                                RevSync replaces fragmented Excel-based lead tracking with a CRM that gives sales reps, team leaders, and admins each the exact view of the pipeline they need — nothing more, nothing less.
+                                RevSync replaces <strong>fragmented Excel-based lead tracking</strong> with a role-scoped CRM that gives <strong>sales reps, team leaders, and admins</strong> each the exact view of the pipeline they need — <strong>eliminating lead drops and data collision</strong>.
                             </p>
 
-                            {/*  Metadata Row (Frame 1261157046: 3 Cards from Figma Spec)  */}
+                            {/*  Metadata Row (Frame 1261157046: 4 Cards)  */}
                             <div className="figma-meta-cards-row">
                                 <div className="figma-meta-card">
                                     <span className="f-meta-label">ROLE</span>
-                                    <strong className="f-meta-val">UI/UX Designer</strong>
+                                    <strong className="f-meta-val">Lead Product Designer</strong>
+                                </div>
+                                <div className="figma-meta-card">
+                                    <span className="f-meta-label">PROJECT TYPE</span>
+                                    <strong className="f-meta-val">B2B SaaS Concept</strong>
                                 </div>
                                 <div className="figma-meta-card">
                                     <span className="f-meta-label">TIMELINE</span>
-                                    <strong className="f-meta-val">3 Weeks</strong>
+                                    <strong className="f-meta-val">3 Weeks (Research to Spec)</strong>
                                 </div>
                                 <div className="figma-meta-card">
-                                    <span className="f-meta-label">TOOLS</span>
-                                    <strong className="f-meta-val">Figma, Claude</strong>
+                                    <span className="f-meta-label">RESEARCH BASE</span>
+                                    <strong className="f-meta-val">18 SME Interviews</strong>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +138,7 @@ export default function RevSyncPage() {
                             </div>
                             <h2 className="problem-main-title">Leads falling through the <span className="accent-lime">cracks</span></h2>
                             <p className="problem-sub-desc">
-                                Excel-based lead tracking. 18 interviews: admin, 4 team leaders, 12 reps, Meta ads operator. Three breakdowns drove the project.
+                                Auditing fragmented Excel lead tracking across <strong>18 interviews</strong>: 1 admin, 4 team leaders, 12 reps, and 1 Meta ads operator. Three operational breakdowns drove the design architecture.
                             </p>
                         </div>
 
@@ -979,13 +984,33 @@ export default function RevSyncPage() {
     </main>
       {/* Lightbox Modal */}
       {lightboxOpen && (
-        <div className="cs-lightbox-overlay active" onClick={closeLightbox}>
-          <div className="cs-lightbox-content" onClick={closeLightbox}>
-            <button className="cs-lightbox-close" onClick={closeLightbox} aria-label="Close lightbox">&times;</button>
-            {lightboxSrc && <img loading="lazy" decoding="async" src={lightboxSrc} alt={lightboxTitle} className="cs-lightbox-img" onClick={closeLightbox} />}
+        <div
+          className="cs-lightbox-overlay active"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeLightbox();
+          }}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="cs-lightbox-content">
+            <button className="cs-lightbox-close" onClick={closeLightbox} aria-label="Close lightbox">
+              ✕ Close (ESC)
+            </button>
+            {lightboxSrc && (
+              <img
+                loading="lazy"
+                decoding="async"
+                src={lightboxSrc}
+                alt={lightboxTitle}
+                className="cs-lightbox-img"
+                onClick={closeLightbox}
+              />
+            )}
             {lightboxTitle && <p className="cs-lightbox-title">{lightboxTitle}</p>}
             {lightboxSub && <p className="cs-lightbox-sub">{lightboxSub}</p>}
-            <div className="lightbox-tap-close-hint">Tap anywhere to close</div>
+            <div className="lightbox-tap-close-hint" onClick={closeLightbox}>
+              Click image or background to close
+            </div>
           </div>
         </div>
       )}

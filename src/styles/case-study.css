@@ -300,9 +300,9 @@ body.case-study-page {
 }
 
 .cs-meta-label {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
-    color: #7A7A80;
+    color: #A1A1AA;
     letter-spacing: 1.5px;
 }
 
@@ -395,6 +395,38 @@ body.case-study-page {
     color: #B8B8C2;
     line-height: 1.65;
     margin-bottom: 28px;
+}
+
+.decision-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 32px 28px;
+    border-radius: 18px;
+    background: rgba(18, 18, 22, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.decision-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(243, 182, 31, 0.3);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 24px rgba(243, 182, 31, 0.06);
+}
+
+.decision-card .cs-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 14px 0 10px 0;
+    line-height: 1.3;
+}
+
+.decision-card .cs-card-desc {
+    font-size: 14.5px;
+    color: #A1A1AA;
+    line-height: 1.6;
+    margin: 0;
 }
 
 .cs-key-takeaway {
@@ -1137,68 +1169,105 @@ body.case-study-page {
     pointer-events: none;
 }
 
-/* Lightbox Modal */
-.cs-lightbox-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(5, 5, 8, 0.95);
-    backdrop-filter: blur(12px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Unified Case Study Lightbox Modal */
+.cs-lightbox-modal,
+.cs-lightbox-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(5, 5, 8, 0.95) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    z-index: 100000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
-    padding: 20px;
+    transition: opacity 0.25s ease;
+    padding: 24px;
+    cursor: pointer;
 }
 
-.cs-lightbox-modal.active {
-    opacity: 1;
-    pointer-events: auto;
+.cs-lightbox-modal.active,
+.cs-lightbox-overlay.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
 }
 
-.lightbox-content {
+.lightbox-content,
+.cs-lightbox-content {
     position: relative;
-    max-width: 480px;
-    width: 100%;
-    max-height: 90vh;
+    max-width: min(92vw, 1080px);
+    width: auto;
+    max-height: 92vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
+    animation: csLbZoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.lightbox-close-btn {
+@keyframes csLbZoomIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.lightbox-close-btn,
+.cs-lightbox-close {
     position: absolute;
-    top: -44px;
+    top: -46px;
     right: 0;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.12);
     color: #FFFFFF;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 13px;
-    font-weight: 700;
-    padding: 6px 14px;
+    font-weight: 600;
+    padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
-    transition: background 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
 }
 
-.lightbox-close-btn:hover {
-    background: #F3B61F;
-    color: #000000;
+.lightbox-close-btn:hover,
+.cs-lightbox-close:hover {
+    background: #DC2626;
+    border-color: #DC2626;
+    color: #FFFFFF;
 }
 
-.lightbox-content img {
+.lightbox-content img,
+.cs-lightbox-img {
     max-width: 100%;
-    max-height: 75vh;
+    max-height: 76vh;
     object-fit: contain;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    cursor: pointer;
+}
+
+.cs-lightbox-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 4px 0 0 0;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.cs-lightbox-sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: #A1A1AA;
+    margin: 0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
 }
 
 .lightbox-caption {
@@ -1259,9 +1328,9 @@ body.case-study-page {
 }
 
 .stage-counter {
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 700;
-    color: #777780;
+    color: #CBD5E1;
 }
 
 .stage-title {
@@ -2171,7 +2240,8 @@ body.revsync-page .f-meta-label {
 }
 
 /* Figma Home Frame Alignment (Node 446-2714 - Exact Spec) */
-.revsync-figma-hero-card {
+.revsync-figma-hero-card,
+.attendly-figma-hero-card {
     background: #020202 !important;
     border: none !important;
     border-radius: 24px;
@@ -2179,7 +2249,12 @@ body.revsync-page .f-meta-label {
     box-shadow: none !important;
 }
 
-.revsync-main-title {
+.accent-amber {
+    color: #F3B61F !important;
+}
+
+.revsync-main-title,
+.attendly-main-title {
     font-family: 'Space Grotesk', sans-serif !important;
     font-style: normal !important;
     font-weight: 400 !important;
@@ -2192,6 +2267,10 @@ body.revsync-page .f-meta-label {
 
 .revsync-main-title .accent-lime {
     color: #CCF655 !important;
+}
+
+.attendly-main-title .accent-amber {
+    color: #F3B61F !important;
 }
 
 .hero-tagline-title {
@@ -2208,9 +2287,9 @@ body.revsync-page .f-meta-label {
     font-family: 'Inter', sans-serif !important;
     font-style: normal !important;
     font-weight: 400 !important;
-    font-size: 14px !important;
-    line-height: 23px !important;
-    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 15px !important;
+    line-height: 24px !important;
+    color: rgba(255, 255, 255, 0.85) !important;
     margin-bottom: 20px !important;
 }
 
@@ -2235,6 +2314,29 @@ body.revsync-page .f-meta-label {
     letter-spacing: 0.55px !important;
     text-transform: uppercase !important;
     color: #CCF655 !important;
+}
+
+.attendly-tag-pill {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 8px 24px !important;
+    gap: 10px !important;
+    height: 32px !important;
+    border: 1px solid #F3B61F !important;
+    border-radius: 24px !important;
+    background: transparent !important;
+    
+    font-family: 'Inter', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    letter-spacing: 0.55px !important;
+    text-transform: uppercase !important;
+    color: #F3B61F !important;
 }
 
 .figma-meta-cards-row {
@@ -2267,12 +2369,12 @@ body.revsync-page .f-meta-label {
 .f-meta-label {
     font-family: 'Inter', sans-serif !important;
     font-style: normal !important;
-    font-weight: 400 !important;
-    font-size: 10px !important;
+    font-weight: 600 !important;
+    font-size: 11px !important;
     line-height: 15px !important;
     letter-spacing: 1.5px !important;
     text-transform: uppercase !important;
-    color: rgba(255, 255, 255, 0.3) !important;
+    color: rgba(255, 255, 255, 0.75) !important;
     white-space: nowrap !important;
 }
 
@@ -2336,14 +2438,22 @@ body.revsync-page .f-meta-label {
     font-style: normal;
     font-weight: 400;
     font-size: 48px !important;
-    line-height: 48px !important;
+    line-height: 1.18 !important;
     letter-spacing: -1.2px;
     color: #FFFFFF;
-    margin: 16px 0 0 0;
+    margin: 16px 0 20px 0;
 }
 
 .problem-main-title .accent-lime {
     color: #CCF655 !important;
+}
+
+.problem-sub-desc {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #A1A1AA;
+    margin: 0;
 }
 
 .problem-quote-card {
@@ -2372,10 +2482,10 @@ body.revsync-page .f-meta-label {
 
 .p-card-quote {
     font-family: 'Inter', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 18px;
     line-height: 28px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.8);
     margin: 0;
 }
 
@@ -2446,14 +2556,14 @@ body.revsync-page .f-meta-label {
 .node-sub {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 11.5px;
     line-height: 14px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .flow-arrow {
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .pipeline-warning-pill {
@@ -2603,9 +2713,9 @@ body.revsync-page .f-meta-label {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 23px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-align: center;
 }
 
@@ -2700,7 +2810,7 @@ body.revsync-page .f-meta-label {
 .persona-count-min {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* Quote */
@@ -2864,9 +2974,9 @@ body.revsync-page .f-meta-label {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 23px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-align: center;
 }
 
@@ -2934,10 +3044,10 @@ body.revsync-page .f-meta-label {
 
 .c-node-sub {
     font-family: 'Inter', sans-serif;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 400;
     line-height: 14px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .c-arrow {
@@ -2961,10 +3071,10 @@ body.revsync-page .f-meta-label {
 .vis-section-title {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .journey-row {
@@ -3027,7 +3137,7 @@ body.revsync-page .f-meta-label {
 
 .j-step-arrow {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .pill-highlight-orange {
@@ -3116,9 +3226,9 @@ body.revsync-page .f-meta-label {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 23px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-align: center;
 }
 
@@ -3244,9 +3354,9 @@ body.revsync-page .f-meta-label {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 23px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-align: left;
 }
 
@@ -3261,11 +3371,11 @@ body.revsync-page .f-meta-label {
 .sg-block-label {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 23px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* Swatches Grid */
@@ -3320,15 +3430,15 @@ body.revsync-page .f-meta-label {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .swatch-usage {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 20px;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.65);
 }
 
 /* Typography Card */
@@ -3472,8 +3582,8 @@ body.revsync-page .f-meta-label {
 }
 
 .font-space { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; color: #FFFFFF; }
-.text-muted { font-size: 14px; color: rgba(255, 255, 255, 0.4); }
-.text-dim { font-size: 12px; letter-spacing: 0.5px; color: rgba(255, 255, 255, 0.3); }
+.text-muted { font-size: 14px; color: rgba(255, 255, 255, 0.72); }
+.text-dim { font-size: 12px; letter-spacing: 0.5px; color: rgba(255, 255, 255, 0.65); }
 
 /* Components Card */
 .sg-components-card {
@@ -3499,10 +3609,10 @@ body.revsync-page .f-meta-label {
 .comp-sub-title {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .sg-kpi-grid {
@@ -3527,7 +3637,8 @@ body.revsync-page .f-meta-label {
 .sg-kpi-lbl {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.72);
     text-transform: uppercase;
 }
 
@@ -3655,7 +3766,7 @@ body.revsync-page .f-meta-label {
 .rem-sub {
     font-family: 'Inter', sans-serif;
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 /* =============================================
@@ -3718,9 +3829,9 @@ body.revsync-page .f-meta-label {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 23px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-align: left;
 }
 
@@ -3785,10 +3896,10 @@ body.revsync-page .f-meta-label {
 
 .sol-role-tag {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .sol-card-sub {
@@ -3796,7 +3907,7 @@ body.revsync-page .f-meta-label {
     font-weight: 400;
     font-size: 14px;
     line-height: 23px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.78);
     margin: 0;
 }
 
@@ -3910,9 +4021,9 @@ body.revsync-page .f-meta-label {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 23px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-align: left;
 }
 
@@ -4004,7 +4115,7 @@ body.revsync-page .f-meta-label {
     font-weight: 400 !important;
     font-size: 14px !important;
     line-height: 23px !important;
-    color: rgba(255, 255, 255, 0.4) !important;
+    color: rgba(255, 255, 255, 0.82) !important;
 }
 
 .ba-icon {
@@ -4046,11 +4157,11 @@ body.revsync-page .f-meta-label {
 .future-section-title {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 23px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .future-pills-row {
@@ -4096,7 +4207,7 @@ body.revsync-page .f-meta-label {
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.82);
 }
 
 .revsync-hero-visual-frame {

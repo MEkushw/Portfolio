@@ -1,5 +1,5 @@
 /* =============================================
-   OMK. Portfolio — Pixel-perfect Figma match
+   OMK. Portfolio - Pixel-perfect Figma match
    Design: 1440 × 7008 px, dark theme
    ============================================= */
 
@@ -45,10 +45,10 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
 ::-webkit-scrollbar-thumb:hover { background:var(--red); }
 
 /* =============================================
-   NAVBAR — glassmorphism bar, centered
+   NAVBAR - glassmorphism bar, centered
    ============================================= */
 /* =============================================
-   NAVBAR — Architectural Grid Bar Header (Aspen Style)
+   NAVBAR - Architectural Grid Bar Header (Aspen Style)
    ============================================= */
 .navbar.grid-bar-navbar {
     position: fixed;
@@ -213,7 +213,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     box-shadow: 0 8px 24px rgba(230, 57, 70, 0.45);
 }
 
-/* Hamburger Button — hidden on desktop */
+/* Hamburger Button - hidden on desktop */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -332,7 +332,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
 }
 
 /* =============================================
-   HERO — 1440 × 1024
+   HERO - 1440 × 1024
    ============================================= */
 .hero {
     position: relative;
@@ -342,17 +342,20 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .hero-bg-image {
     position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(50,50,55,0.2) 0%, rgba(10,10,12,0.95) 75%);
+    background: radial-gradient(circle at 50% 25%, rgba(60, 40, 65, 0.28) 0%, rgba(9, 9, 11, 0.98) 75%);
 }
 
 .hero-bg-overlay {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.7) 100%);
+    background: 
+        radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.75) 100%),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0px, rgba(255, 255, 255, 0.012) 1px, transparent 1px, transparent 3px);
+    pointer-events: none;
 }
 
 .hero-content {
@@ -360,7 +363,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    padding: 130px 40px 50px 40px;
+    padding: 104px 40px 40px 40px;
 }
 
 .hero-main {
@@ -370,14 +373,15 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     gap: 0px;
 }
 
-/* Title row: title-group left, description right */
+/* Title row: title-group left, description right - Editorial Minimalist */
 .hero-top-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
-    max-width: 960px;
-    margin-bottom: 24px;
+    max-width: 1040px;
+    margin-bottom: 14px;
+    gap: 32px;
     position: relative;
     z-index: 5;
 }
@@ -386,45 +390,51 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     display: flex;
     flex-direction: column;
     gap: 0;
+    min-width: 0;
+    flex-shrink: 0;
 }
 
 .hero-subtitle {
     font-family: var(--fh);
-    font-size: 44px;
+    font-size: 34px;
     font-weight: 400;
-    color: #9E9E9E;
+    color: #A1A1AA;
     line-height: 1.1;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .hero-title {
     font-family: var(--fd);
-    font-size: 72px;
+    font-size: clamp(38px, 4.4vw, 68px);
     font-weight: 700;
     color: #FFFFFF;
-    line-height: 1.1;
+    line-height: 1.05;
     margin-top: 0;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.8px;
+    white-space: nowrap !important;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
 }
 
 .hero-description {
-    width: 380px;
-    max-width: 420px;
-    font-size: 18px;
-    font-weight: 400;
-    color: #D4D4D8;
+    width: auto;
+    max-width: 440px;
+    font-family: var(--ff);
+    font-style: normal;
+    font-size: clamp(17px, 1.4vw, 21px);
+    font-weight: 500;
+    color: #E4E4E7;
     text-align: right;
     line-height: 1.45;
-    flex-shrink: 0;
-    margin-bottom: 8px;
+    flex-shrink: 1;
+    margin-bottom: 6px;
     letter-spacing: -0.2px;
 }
 
-/* 3D Pop-Out Hero Stage */
+/* 3D Pop-Out Hero Stage with subtle 80s sunset ambient warmth */
 .hero-stage {
     position: relative;
     width: 100%;
-    max-width: 960px;
+    max-width: 1040px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -435,21 +445,32 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
 .hero-card-window {
     position: relative;
     width: 100%;
-    max-width: 960px;
+    max-width: 1040px;
+}
+
+/* Subtle 80s Sunset Ambient Backlight */
+.hero-80s-ambient-glow {
+    position: absolute;
+    inset: -20px 0px 0px 0px;
+    background: radial-gradient(ellipse at 50% 65%, rgba(230, 57, 70, 0.24) 0%, rgba(243, 182, 31, 0.10) 38%, transparent 70%);
+    filter: blur(36px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.85;
 }
 
 .user-hero-img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 6px;
-    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.8));
+    border-radius: 8px;
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.85));
 }
 
 .hero-status-wrapper {
     width: 100%;
-    max-width: 960px;
-    margin-top: 14px;
+    max-width: 1040px;
+    margin-top: 12px;
     display: flex;
     justify-content: flex-start;
     padding: 0;
@@ -460,13 +481,32 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     font-style: italic;
     font-size: 13px;
     font-weight: 500;
-    color: #D6C2B4;
+    color: #CCF655;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     line-height: 1.4;
     text-align: left;
     margin: 0;
     padding: 0;
+}
+
+@media (max-width: 860px) {
+    .hero-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .hero-description {
+        width: 100%;
+        max-width: 100%;
+        text-align: left;
+    }
+    .hero-title {
+        font-size: 48px;
+    }
+    .hero-subtitle {
+        font-size: 34px;
+    }
 }
 
 /* =============================================
@@ -1202,7 +1242,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
 }
 
 /* =============================================
-   INFO SECTION — Staggered Edge-Bleed Layout
+   INFO SECTION - Staggered Edge-Bleed Layout
    ============================================= */
 .info-section {
     background: #000000;
@@ -1238,7 +1278,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     font-style: italic;
 }
 
-/* Full-bleed cards row — extends past viewport edges */
+/* Full-bleed cards row - extends past viewport edges */
 .info-cards-row {
     display: flex;
     align-items: center;
@@ -1528,7 +1568,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
         padding-bottom: 40px;
     }
 
-    /* Navigation — Grid Bar Header mode (<768px Mobile) */
+    /* Navigation - Grid Bar Header mode (<768px Mobile) */
     .navbar.grid-bar-navbar {
         top: 0 !important;
         left: 0 !important;
@@ -1623,7 +1663,7 @@ button { border:none; background:none; cursor:pointer; font:inherit; }
     .section-header-row { margin-bottom: 28px; }
     .section-inner { padding: 0 20px; }
 
-    /* Case Studies — Responsive styling */
+    /* Case Studies - Responsive styling */
     .case-studies { padding: 40px 0; }
     .cs-cards-stack { gap: 32px; }
 

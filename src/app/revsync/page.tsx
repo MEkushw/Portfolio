@@ -3,12 +3,92 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 
+interface LofiScreen {
+  id: string;
+  num: string;
+  title: string;
+  role: string;
+  category: 'sales' | 'admin';
+  layoutType: 'wide' | 'narrow';
+  src: string;
+  meta: string;
+}
+
+const BENTO_LOFI_SCREENS: LofiScreen[] = [
+  {
+    id: 'sales-dashboard',
+    num: '01',
+    title: 'Sales Rep Command Center',
+    role: 'Sales Rep Flow',
+    category: 'sales',
+    layoutType: 'wide',
+    src: '/assets/images/revsync/lofi/Sales_Dashboard.png',
+    meta: 'Widescreen Desktop',
+  },
+  {
+    id: 'lead-profile',
+    num: '02',
+    title: 'Contextual Lead Drawer',
+    role: 'Sales Rep Flow',
+    category: 'sales',
+    layoutType: 'narrow',
+    src: '/assets/images/revsync/lofi/Popup_Lead_Profile.png',
+    meta: 'Slide-over Drawer',
+  },
+  {
+    id: 'schedule-followup',
+    num: '03',
+    title: 'Rapid Follow-Up Scheduler',
+    role: 'Sales Rep Flow',
+    category: 'sales',
+    layoutType: 'narrow',
+    src: '/assets/images/revsync/lofi/Popup_Schedule_Follow_Up.png',
+    meta: 'Modal Overlay',
+  },
+  {
+    id: 'sales-leads',
+    num: '04',
+    title: 'Leads Pipeline & Matrix',
+    role: 'Sales Rep Flow',
+    category: 'sales',
+    layoutType: 'wide',
+    src: '/assets/images/revsync/lofi/Sales_Leads.png',
+    meta: 'High-Density Table',
+  },
+  {
+    id: 'admin-allocation',
+    num: '05',
+    title: 'Intelligent Lead Allocation Engine',
+    role: 'Admin Operations',
+    category: 'admin',
+    layoutType: 'wide',
+    src: '/assets/images/revsync/lofi/Admin_Leads_Allocation.png',
+    meta: 'Bulk Distribution Matrix',
+  },
+  {
+    id: 'import-leads',
+    num: '06',
+    title: 'Meta Ads CSV Import Wizard',
+    role: 'Admin Operations',
+    category: 'admin',
+    layoutType: 'narrow',
+    src: '/assets/images/revsync/lofi/Popup_Import_Leads.png',
+    meta: 'Column Mapping Wizard',
+  },
+];
+
 export default function RevSyncPage() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState('');
   const [lightboxTitle, setLightboxTitle] = useState('');
   const [lightboxSub, setLightboxSub] = useState('');
-    useEffect(() => {
+  const [lofiFilter, setLofiFilter] = useState<'all' | 'sales' | 'admin'>('all');
+
+  const filteredBentoScreens = lofiFilter === 'all'
+    ? BENTO_LOFI_SCREENS
+    : BENTO_LOFI_SCREENS.filter(screen => screen.category === lofiFilter);
+
+  useEffect(() => {
     return () => {
       document.body.style.overflow = '';
     };
@@ -89,34 +169,34 @@ export default function RevSyncPage() {
                             <h1 className="cs-main-title revsync-main-title">Rev<span className="accent-lime">Sync</span></h1>
                             <h2 className="hero-tagline-title">Designing a role-scoped CRM for sales teams running on spreadsheets.</h2>
                             <p className="hero-body-desc">
-                                RevSync replaces <strong>fragmented Excel-based lead tracking</strong> with a role-scoped CRM that gives <strong>sales reps, team leaders, and admins</strong> each the exact view of the pipeline they need — <strong>eliminating lead drops and data collision</strong>.
+                                RevSync replaces <strong>fragmented Excel-based lead tracking</strong> with a role-scoped CRM that gives <strong>sales reps, team leaders, and admins</strong> each the exact view of the pipeline they need - <strong>eliminating lead drops and data collision</strong>.
                             </p>
-
-                            {/*  Metadata Row (Frame 1261157046: 4 Cards)  */}
-                            <div className="figma-meta-cards-row">
-                                <div className="figma-meta-card">
-                                    <span className="f-meta-label">ROLE</span>
-                                    <strong className="f-meta-val">Lead Product Designer</strong>
-                                </div>
-                                <div className="figma-meta-card">
-                                    <span className="f-meta-label">PROJECT TYPE</span>
-                                    <strong className="f-meta-val">B2B SaaS Concept</strong>
-                                </div>
-                                <div className="figma-meta-card">
-                                    <span className="f-meta-label">TIMELINE</span>
-                                    <strong className="f-meta-val">3 Weeks (Research to Spec)</strong>
-                                </div>
-                                <div className="figma-meta-card">
-                                    <span className="f-meta-label">RESEARCH BASE</span>
-                                    <strong className="f-meta-val">18 SME Interviews</strong>
-                                </div>
-                            </div>
                         </div>
 
                         <div className="hero-visual-col">
-                            <div className="cs-image-frame revsync-hero-visual-frame" onClick={() => openLightbox('/assets/images/revsync/source/Hero_Image.png', 'REVSYNC • HERO', 'Sales CRM Control Center Dashboard')}>
+                            <div className="revsync-hero-visual-frame" onClick={() => openLightbox('/assets/images/revsync/source/Hero_Image.png', 'REVSYNC • HERO', 'Sales CRM Control Center Dashboard')}>
                                 <img loading="lazy" decoding="async" src="/assets/images/revsync/source/Hero_Image.png" alt="RevSync Web CRM Dashboard Mockup" className="cs-image" />
                             </div>
+                        </div>
+                    </div>
+
+                    {/*  Metadata Row (Frame 1261157046: 4 Cards)  */}
+                    <div className="figma-meta-cards-row">
+                        <div className="figma-meta-card">
+                            <span className="f-meta-label">ROLE</span>
+                            <strong className="f-meta-val">Lead Product Designer</strong>
+                        </div>
+                        <div className="figma-meta-card">
+                            <span className="f-meta-label">PROJECT TYPE</span>
+                            <strong className="f-meta-val">B2B SaaS Concept</strong>
+                        </div>
+                        <div className="figma-meta-card">
+                            <span className="f-meta-label">TIMELINE</span>
+                            <strong className="f-meta-val">3 Weeks (Research to Spec)</strong>
+                        </div>
+                        <div className="figma-meta-card">
+                            <span className="f-meta-label">RESEARCH BASE</span>
+                            <strong className="f-meta-val">18 SME Interviews</strong>
                         </div>
                     </div>
                 </div>
@@ -197,7 +277,7 @@ export default function RevSyncPage() {
                         {/*  Bottom Warning Badge  */}
                         <div className="pipeline-warning-pill">
                             <span className="warn-cross"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
-                            <span>4-step handoff — no reminders, no visibility</span>
+                            <span>4-step handoff - no reminders, no visibility</span>
                         </div>
                     </div>
 
@@ -210,7 +290,7 @@ export default function RevSyncPage() {
                             </div>
                             <h3 className="p-metric-num num-orange">0</h3>
                             <h4 className="p-metric-title">Missed follow-ups/day</h4>
-                            <p className="p-metric-sub">No reminders. Reps type dates manually — leads slip.</p>
+                            <p className="p-metric-sub">No reminders. Reps type dates manually - leads slip.</p>
                         </div>
 
                         {/*  Card 02: Blue  */}
@@ -250,7 +330,7 @@ export default function RevSyncPage() {
                             <span className="audience-tag-pill">TARGET AUDIENCE</span>
                         </div>
                         <h2 className="audience-main-title">Three roles, one <span className="accent-lime">database</span></h2>
-                        <p className="audience-sub-desc">Each role scoped over the same lead data — individual, team, org-wide.</p>
+                        <p className="audience-sub-desc">Each role scoped over the same lead data - individual, team, org-wide.</p>
                     </div>
 
                     {/*  3 Redesigned Persona Cards Grid  */}
@@ -681,7 +761,7 @@ export default function RevSyncPage() {
                                 </div>
                                 <div className="typo-sample-col">
                                     <span className="sample-spec">Table / 14px / 400</span>
-                                    <p className="sample-table">Rahul Kumar — Mumbai</p>
+                                    <p className="sample-table">Rahul Kumar - Mumbai</p>
                                 </div>
                                 <div className="typo-sample-col">
                                     <span className="sample-spec">CTA / 16px / 600</span>
@@ -763,7 +843,7 @@ export default function RevSyncPage() {
                                         </div>
                                         <div className="sg-rem-info">
                                             <h5 className="rem-title">Follow-up due today</h5>
-                                            <span className="rem-sub">Rahul Kumar — Retail Branch Banking</span>
+                                            <span className="rem-sub">Rahul Kumar - Retail Branch Banking</span>
                                         </div>
                                         <span className="rem-arrow">›</span>
                                     </div>
@@ -781,8 +861,83 @@ export default function RevSyncPage() {
         {/*  ================= 05. LO-FI WIREFRAMES =================  */}
         <section id="wireframes" className="cs-section">
             <div className="cs-section-inner">
-                <div className="revsync-lofi-hero-frame" onClick={() => openLightbox('/assets/images/revsync/Lo-Fi Wireframes.png', 'LOW FIDELITY WIREFRAMES', 'Structural sketches to validate decision &amp; information hierarchy')} title="Tap to view full screen">
-                    <img loading="lazy" decoding="async" src="/assets/images/revsync/Lo-Fi Wireframes.png" alt="Low Fidelity Wireframes Frame" className="lofi-hero-img" />
+                <div className="revsync-lofi-container">
+                    {/* Header */}
+                    <div className="lofi-header-block">
+                        <div className="cs-badge-row margin-bottom-12">
+                            <span className="lofi-tag-pill">LOW-FIDELITY WIREFRAMES</span>
+                        </div>
+                        <h2 className="lofi-main-title">Core Layouts &amp; <span className="accent-lime">Wireframes</span></h2>
+                        <p className="lofi-sub-desc">Early structural blueprints establishing information hierarchy, layout density, and primary workflows before visual styling.</p>
+                    </div>
+
+                    {/* Filter Pills */}
+                    <div className="revsync-lofi-filters">
+                        <button 
+                            type="button"
+                            className={`revsync-filter-pill ${lofiFilter === 'all' ? 'active' : ''}`}
+                            onClick={() => setLofiFilter('all')}
+                        >
+                            All Screens ({BENTO_LOFI_SCREENS.length})
+                        </button>
+                        <button 
+                            type="button"
+                            className={`revsync-filter-pill ${lofiFilter === 'sales' ? 'active' : ''}`}
+                            onClick={() => setLofiFilter('sales')}
+                        >
+                            💼 Sales Rep Flows ({BENTO_LOFI_SCREENS.filter(s => s.category === 'sales').length})
+                        </button>
+                        <button 
+                            type="button"
+                            className={`revsync-filter-pill ${lofiFilter === 'admin' ? 'active' : ''}`}
+                            onClick={() => setLofiFilter('admin')}
+                        >
+                            🛡️ Admin Operations ({BENTO_LOFI_SCREENS.filter(s => s.category === 'admin').length})
+                        </button>
+                    </div>
+
+                    {/* 2026 Trending Editorial Bento Grid */}
+                    <div className="revsync-lofi-bento">
+                        {filteredBentoScreens.map((screen) => {
+                            const isWide = lofiFilter === 'all' ? screen.layoutType === 'wide' : false;
+                            return (
+                                <div 
+                                    key={screen.id}
+                                    role="button"
+                                    tabIndex={0}
+                                    className={`bento-wireframe-card ${isWide ? 'bento-card-wide' : 'bento-card-narrow'}`}
+                                    onClick={() => openLightbox(screen.src, `${screen.num}. ${screen.title.toUpperCase()}`, `${screen.role} • ${screen.meta}`)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            openLightbox(screen.src, `${screen.num}. ${screen.title.toUpperCase()}`, `${screen.role} • ${screen.meta}`);
+                                        }
+                                    }}
+                                    title="Tap to inspect full resolution"
+                                >
+                                    <div className="bento-card-header">
+                                        <div className="bento-header-left">
+                                            <span className="bento-num-pill">{screen.num}</span>
+                                            <h4 className="bento-card-title">{screen.title}</h4>
+                                        </div>
+                                        <span className={`bento-role-badge ${screen.category === 'admin' ? 'admin' : ''}`}>
+                                            {screen.role}
+                                        </span>
+                                    </div>
+                                    <div className="bento-visual-canvas">
+                                        <img 
+                                            loading="lazy" 
+                                            decoding="async" 
+                                            src={screen.src} 
+                                            alt={screen.title} 
+                                            className="bento-wireframe-img" 
+                                        />
+                                        <span className="bento-zoom-hint">🔍 Expand</span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>
@@ -803,78 +958,126 @@ export default function RevSyncPage() {
 
                     {/*  4 Hi-Fi Screen Solution Cards (2 x 2 Grid Layout)  */}
                     <div className="sol-cards-grid">
-                        {/*  Card 01: Dashboard  */}
+                        {/*  Card 01: Sales Dashboard  */}
                         <div className="sol-card-item">
                             <div className="sol-card-header">
                                 <div className="sol-icon-box icon-lime-bg">
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CCF655" strokeWidth="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                                 </div>
                                 <div className="sol-title-group">
-                                    <h4 className="sol-card-title">Dashboard</h4>
-                                    <span className="sol-role-tag">Admin View</span>
+                                    <h4 className="sol-card-title">Sales Dashboard</h4>
+                                    <span className="sol-role-tag">Sales Rep View</span>
                                 </div>
                             </div>
-                            <p className="sol-card-sub">Org-wide KPIs at login — replaces opening every rep's file.</p>
-                            <div className="sol-img-frame" onClick={() => openLightbox('/assets/images/revsync/source/Dashboard_Hi-Fi_Wireframe.png', 'DASHBOARD • ADMIN VIEW', 'Org-wide KPIs at login')}>
+                            <p className="sol-card-sub">Daily execution cockpit - prioritized follow-up queue, conversion metrics, and one-tap call actions.</p>
+                            <div 
+                                role="button"
+                                tabIndex={0}
+                                className="sol-img-frame" 
+                                onClick={() => openLightbox('/assets/images/revsync/hifi_new/Sales_Dashboard_HiFi.png', 'SALES DASHBOARD • SALES REP VIEW', 'Daily execution cockpit - prioritized follow-up queue, conversion metrics, and one-tap call actions.')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        openLightbox('/assets/images/revsync/hifi_new/Sales_Dashboard_HiFi.png', 'SALES DASHBOARD • SALES REP VIEW', 'Daily execution cockpit - prioritized follow-up queue, conversion metrics, and one-tap call actions.');
+                                    }
+                                }}
+                                title="Click to view full resolution"
+                            >
                                 <div className="sol-green-border-wrapper">
-                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/source/Dashboard_Hi-Fi_Wireframe.png" alt="Dashboard Hi-Fi Wireframe" className="sol-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/hifi_new/Sales_Dashboard_HiFi.png" alt="Sales Dashboard Hi-Fi Interface" className="sol-img" />
                                 </div>
                             </div>
                         </div>
 
-                        {/*  Card 02: Leads Import  */}
+                        {/*  Card 02: Leads Pipeline  */}
                         <div className="sol-card-item">
                             <div className="sol-card-header">
                                 <div className="sol-icon-box icon-blue-bg">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
                                 </div>
                                 <div className="sol-title-group">
-                                    <h4 className="sol-card-title">Leads Import</h4>
-                                    <span className="sol-role-tag">Team Leader view</span>
+                                    <h4 className="sol-card-title">Leads Pipeline</h4>
+                                    <span className="sol-role-tag">Sales Rep View</span>
                                 </div>
                             </div>
-                            <p className="sol-card-sub">One import replaces 4-step manual handoff chain.</p>
-                            <div className="sol-img-frame" onClick={() => openLightbox('/assets/images/revsync/source/LeadsImport_Hi-Fi_Wireframe.png', 'LEADS IMPORT • TEAM LEADER VIEW', 'One import replaces 4-step manual handoff chain')}>
+                            <p className="sol-card-sub">High-density lead management matrix with zero-latency status filtering and direct communication logging.</p>
+                            <div 
+                                role="button"
+                                tabIndex={0}
+                                className="sol-img-frame" 
+                                onClick={() => openLightbox('/assets/images/revsync/hifi_new/Sales_Leads_HiFi.png', 'LEADS PIPELINE • SALES REP VIEW', 'High-density lead management matrix with zero-latency status filtering and direct communication logging.')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        openLightbox('/assets/images/revsync/hifi_new/Sales_Leads_HiFi.png', 'LEADS PIPELINE • SALES REP VIEW', 'High-density lead management matrix with zero-latency status filtering and direct communication logging.');
+                                    }
+                                }}
+                                title="Click to view full resolution"
+                            >
                                 <div className="sol-green-border-wrapper">
-                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/source/LeadsImport_Hi-Fi_Wireframe.png" alt="Leads Import Hi-Fi Wireframe" className="sol-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/hifi_new/Sales_Leads_HiFi.png" alt="Sales Leads Pipeline Hi-Fi Interface" className="sol-img" />
                                 </div>
                             </div>
                         </div>
 
-                        {/*  Card 03: Lead Detail  */}
+                        {/*  Card 03: Executive Dashboard  */}
                         <div className="sol-card-item">
                             <div className="sol-card-header">
                                 <div className="sol-icon-box icon-orange-bg">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                                 </div>
                                 <div className="sol-title-group">
-                                    <h4 className="sol-card-title">Lead Detail</h4>
-                                    <span className="sol-role-tag">Rep View</span>
+                                    <h4 className="sol-card-title">Executive Dashboard</h4>
+                                    <span className="sol-role-tag">Admin View</span>
                                 </div>
                             </div>
-                            <p className="sol-card-sub">Full lead history — no more info trapped in one person.</p>
-                            <div className="sol-img-frame" onClick={() => openLightbox('/assets/images/revsync/source/LeadDetail_Hi-Fi_Wireframe.png', 'LEAD DETAIL • REP VIEW', 'Full lead history and timeline')}>
+                            <p className="sol-card-sub">Org-wide KPI overview - real-time conversion rates, team workload distribution, and channel attribution.</p>
+                            <div 
+                                role="button"
+                                tabIndex={0}
+                                className="sol-img-frame" 
+                                onClick={() => openLightbox('/assets/images/revsync/hifi_new/Admin_Dashboard_HiFi.png', 'EXECUTIVE DASHBOARD • ADMIN VIEW', 'Org-wide KPI overview - real-time conversion rates, team workload distribution, and channel attribution.')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        openLightbox('/assets/images/revsync/hifi_new/Admin_Dashboard_HiFi.png', 'EXECUTIVE DASHBOARD • ADMIN VIEW', 'Org-wide KPI overview - real-time conversion rates, team workload distribution, and channel attribution.');
+                                    }
+                                }}
+                                title="Click to view full resolution"
+                            >
                                 <div className="sol-green-border-wrapper">
-                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/source/LeadDetail_Hi-Fi_Wireframe.png" alt="Lead Detail Hi-Fi Wireframe" className="sol-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/hifi_new/Admin_Dashboard_HiFi.png" alt="Executive Dashboard Hi-Fi Interface" className="sol-img" />
                                 </div>
                             </div>
                         </div>
 
-                        {/*  Card 04: Assign Leads  */}
+                        {/*  Card 04: Leads Import Engine  */}
                         <div className="sol-card-item">
                             <div className="sol-card-header">
                                 <div className="sol-icon-box icon-green-bg">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                                 </div>
                                 <div className="sol-title-group">
-                                    <h4 className="sol-card-title">Assign Leads</h4>
-                                    <span className="sol-role-tag">Team Leader View</span>
+                                    <h4 className="sol-card-title">Leads Import Engine</h4>
+                                    <span className="sol-role-tag">Admin &amp; Team Leader View</span>
                                 </div>
                             </div>
-                            <p className="sol-card-sub">Select, assign, done — no more splitting CSV rows by hand.</p>
-                            <div className="sol-img-frame" onClick={() => openLightbox('/assets/images/revsync/source/AssignLeads_Hi-Fi_Wireframe.png', 'ASSIGN LEADS • TEAM LEADER VIEW', 'Select, assign, done')}>
+                            <p className="sol-card-sub">3-step intelligent CSV mapper replacing a 4-step manual handoff chain with zero data loss.</p>
+                            <div 
+                                role="button"
+                                tabIndex={0}
+                                className="sol-img-frame" 
+                                onClick={() => openLightbox('/assets/images/revsync/hifi_new/Admin_Leads_Import_HiFi.png', 'LEADS IMPORT ENGINE • ADMIN & TEAM LEADER VIEW', '3-step intelligent CSV mapper replacing a 4-step manual handoff chain with zero data loss.')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        openLightbox('/assets/images/revsync/hifi_new/Admin_Leads_Import_HiFi.png', 'LEADS IMPORT ENGINE • ADMIN & TEAM LEADER VIEW', '3-step intelligent CSV mapper replacing a 4-step manual handoff chain with zero data loss.');
+                                    }
+                                }}
+                                title="Click to view full resolution"
+                            >
                                 <div className="sol-green-border-wrapper">
-                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/source/AssignLeads_Hi-Fi_Wireframe.png" alt="Assign Leads Hi-Fi Wireframe" className="sol-img" />
+                                    <img loading="lazy" decoding="async" src="/assets/images/revsync/hifi_new/Admin_Leads_Import_HiFi.png" alt="Leads Import Engine Hi-Fi Interface" className="sol-img" />
                                 </div>
                             </div>
                         </div>
@@ -896,7 +1099,7 @@ export default function RevSyncPage() {
                             <span className="res-tag-pill">RESULTS &amp; TAKEAWAYS</span>
                         </div>
                         <h2 className="res-main-title">What changed, and<br />what <span className="accent-lime">I’d do in future</span></h2>
-                        <p className="res-sub-desc">Client-reported outcomes from the team using the design direction. Grounded in direct interviews, not a formal usability study — that's the next step.</p>
+                        <p className="res-sub-desc">Client-reported outcomes from the team using the design direction. Grounded in direct interviews, not a formal usability study - that's the next step.</p>
                     </div>
 
                     {/*  3 Impact Metric Cards Row  */}
@@ -924,23 +1127,23 @@ export default function RevSyncPage() {
                     <div className="res-ba-row">
                         {/*  Before Card  */}
                         <div className="ba-card card-before">
-                            <h4 className="ba-card-title text-red">Before — Excel Process</h4>
+                            <h4 className="ba-card-title text-red">Before - Excel Process</h4>
                             <ul className="ba-list list-red">
                                 <li><span className="ba-icon icon-red"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Export from Meta ads → receive CSV file</li>
                                 <li><span className="ba-icon icon-red"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Team leader manually splits rows across reps</li>
                                 <li><span className="ba-icon icon-red"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Each rep opens their own spreadsheet</li>
-                                <li><span className="ba-icon icon-red"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Follow-up dates typed manually — no reminders</li>
+                                <li><span className="ba-icon icon-red"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Follow-up dates typed manually - no reminders</li>
                                 <li><span className="ba-icon icon-red"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Admin opens every file to check performance</li>
                             </ul>
                         </div>
 
                         {/*  After Card  */}
                         <div className="ba-card card-after">
-                            <h4 className="ba-card-title text-lime">After — RevSync</h4>
+                            <h4 className="ba-card-title text-lime">After - RevSync</h4>
                             <ul className="ba-list list-lime">
                                 <li><span className="ba-icon icon-lime"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="#CCF655" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Import CSV → leads appear in shared database</li>
                                 <li><span className="ba-icon icon-lime"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="#CCF655" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Team leader selects and assigns in one action</li>
-                                <li><span className="ba-icon icon-lime"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="#CCF655" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Reps see only their leads — clean, scoped view</li>
+                                <li><span className="ba-icon icon-lime"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="#CCF655" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Reps see only their leads - clean, scoped view</li>
                                 <li><span className="ba-icon icon-lime"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="#CCF655" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Follow-up dates trigger automatic reminders</li>
                                 <li><span className="ba-icon icon-lime"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="#CCF655" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span> Admin sees org-wide KPIs on one dashboard</li>
                             </ul>
@@ -954,7 +1157,7 @@ export default function RevSyncPage() {
                         <div className="future-pills-row">
                             <div className="future-pill">
                                 <span className="f-num num-orange">1</span>
-                                <span className="f-text">Usability testing on real interface — next step</span>
+                                <span className="f-text">Usability testing on real interface - next step</span>
                             </div>
                             <div className="future-pill">
                                 <span className="f-num num-blue">2</span>
@@ -976,7 +1179,7 @@ export default function RevSyncPage() {
         <section className="next-project-section">
             <a href="/attendly" className="next-proj-card">
                 <div className="next-proj-label">NEXT CASE STUDY</div>
-                <h3 className="next-proj-title">ATTENDLY — Mobile Attendance &amp; Task App →</h3>
+                <h3 className="next-proj-title">ATTENDLY - Mobile Attendance &amp; Task App →</h3>
                 <p className="next-proj-desc">1.2-second check-in system designed for fast-paced SMB operations.</p>
             </a>
         </section>

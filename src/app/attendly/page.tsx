@@ -64,25 +64,25 @@ export default function AttendlyPage() {
 
   const hifiScreens = [
     {
-      img: '/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png',
+      img: '/assets/images/attendly/Source/Hi-Fi_Wireframe_4.png',
       badge: 'EMPLOYEE HUB • WF-01',
       title: '01. Attendance Hub',
       desc: 'High-contrast mobile dashboard giving deskless staff immediate shift visibility, live status badge, and the signature one-gesture slide check-in timestamp.'
     },
     {
-      img: '/assets/images/attendly/Source/Hi-Fi_Wireframe_3.png',
+      img: '/assets/images/attendly/Source/Hi-Fi_Wireframe_6.png',
       badge: 'EMPLOYEE HUB • WF-02',
       title: '02. Notifications & Alerts',
       desc: 'Focused alert stream surfacing shift adjustments, manager sign-offs, and critical broadcast announcements without notification fatigue.'
     },
     {
-      img: '/assets/images/attendly/Source/Hi-Fi_Wireframe_4.png',
+      img: '/assets/images/attendly/Source/Hi-Fi_Wireframe_3.png',
       badge: 'EMPLOYEE HUB • WF-03',
       title: '03. Leave Requests Portal',
       desc: '2-tap asynchronous leave submission with category chips, date ranges, and live manager approval status to replace informal WhatsApp chats.'
     },
     {
-      img: '/assets/images/attendly/Source/Hi-Fi_Wireframe_6.png',
+      img: '/assets/images/attendly/Source/Hi-Fi_Wireframe_1.png',
       badge: 'EMPLOYEE HUB • WF-04',
       title: '04. Employee Performance Scorecard',
       desc: 'Monthly transparency scorecard breaking down punctuality rates, total logged hours, and attendance consistency to eliminate payroll disputes.'
@@ -193,43 +193,55 @@ export default function AttendlyPage() {
                   </div>
 
                   <h1 className="cs-main-title attendly-main-title">Attend<span className="accent-amber">ly</span></h1>
-                  <h2 className="hero-tagline-title">Designing a zero-friction mobile check-in &amp; task app for deskless teams.</h2>
+                  <h2 className="hero-tagline-title">Designing a fast, single-gesture mobile check-in &amp; task app for deskless teams.</h2>
 
                   <p className="hero-body-desc">
-                    Enterprise HRMS suites (Darwinbox, Keka) are <strong>over-engineered for desk workers</strong>, while paper registers and WhatsApp chats lead to <strong>missed punches, audit chaos, and payroll disputes</strong>. Attendly re-engineers the daily employee loop into a <strong>single-gesture mobile experience</strong> engineered specifically for <strong>5–50 person deskless teams</strong>.
+                    Enterprise HRMS suites (Darwinbox, Keka) are <strong>over-engineered for desk workers</strong>, while paper registers and WhatsApp chats lead to <strong>missed punches, audit chaos, and payroll disputes</strong>. Attendly re-engineers the daily employee loop into a <strong>single-gesture mobile experience</strong> engineered specifically for <strong>5-50 person deskless teams</strong>.
                   </p>
-
-                  {/* Metadata Row (4 Cards matching RevSync) */}
-                  <div className="figma-meta-cards-row">
-                    <div className="figma-meta-card">
-                      <span className="f-meta-label">ROLE</span>
-                      <strong className="f-meta-val">Lead Product Designer</strong>
-                    </div>
-                    <div className="figma-meta-card">
-                      <span className="f-meta-label">PROJECT TYPE</span>
-                      <strong className="f-meta-val">Mobile App Concept</strong>
-                    </div>
-                    <div className="figma-meta-card">
-                      <span className="f-meta-label">TIMELINE</span>
-                      <strong className="f-meta-val">4 Weeks (Discovery to Spec)</strong>
-                    </div>
-                    <div className="figma-meta-card">
-                      <span className="f-meta-label">FIELD VALIDATION</span>
-                      <strong className="f-meta-val">&lt; 1.2s Check-in • 14 Users</strong>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="hero-visual-col">
-                  <div className="cs-image-frame revsync-hero-visual-frame" onClick={() => openLightbox('/assets/images/attendly/attendly_hero_phones.png', 'ATTENDLY • HERO', 'Dual Phone Interface Showcase')}>
+                  <div 
+                    role="button"
+                    tabIndex={0}
+                    className="revsync-hero-visual-frame" 
+                    onClick={() => openLightbox('/assets/images/attendly/Source/HeroImage.png', 'ATTENDLY • HERO', 'Dual Phone Interface Showcase')}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox('/assets/images/attendly/Source/HeroImage.png', 'ATTENDLY • HERO', 'Dual Phone Interface Showcase');
+                      }
+                    }}
+                    title="Tap to expand screen"
+                  >
                     <img
                       loading="lazy"
                       decoding="async"
-                      src="/assets/images/attendly/attendly_hero_phones.png"
+                      src="/assets/images/attendly/Source/HeroImage.png"
                       alt="Attendly Mobile App Dual Phone Interface Showcase"
                       className="cs-image"
                     />
                   </div>
+                </div>
+              </div>
+
+              {/* Metadata Row (4 Cards matching RevSync) */}
+              <div className="figma-meta-cards-row">
+                <div className="figma-meta-card">
+                  <span className="f-meta-label">ROLE</span>
+                  <strong className="f-meta-val">Lead Product Designer</strong>
+                </div>
+                <div className="figma-meta-card">
+                  <span className="f-meta-label">PROJECT TYPE</span>
+                  <strong className="f-meta-val">Mobile App Concept</strong>
+                </div>
+                <div className="figma-meta-card">
+                  <span className="f-meta-label">TIMELINE</span>
+                  <strong className="f-meta-val">4 Weeks (Discovery to Spec)</strong>
+                </div>
+                <div className="figma-meta-card">
+                  <span className="f-meta-label">FIELD VALIDATION</span>
+                  <strong className="f-meta-val">&lt; 1.2s Check-in • 14 Users</strong>
                 </div>
               </div>
             </div>
@@ -239,12 +251,12 @@ export default function AttendlyPage() {
         {/* ================= 02. EXECUTIVE PROBLEM & MARKET PARADOX ================= */}
         <section id="problem-opportunity" className="cs-section">
           <div className="cs-section-inner">
-            <div className="audience-header-block margin-bottom-30">
-              <div className="cs-badge-row margin-bottom-12">
-                <span className="problem-tag-pill" style={{ borderColor: '#F3B61F', color: '#F3B61F' }}>THE PROBLEM</span>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">THE PROBLEM</span>
               </div>
-              <h2 className="problem-main-title">Why attendance breaks for <span className="accent-amber">deskless teams</span></h2>
-              <p className="problem-sub-desc">
+              <h2 className="section-block-title">Why attendance breaks for <span className="accent-amber">deskless teams</span></h2>
+              <p className="section-block-desc">
                 Auditing SMB attendance across <strong>14 user interviews</strong>: 3 business owners, 4 store managers, and 7 field staff. Two critical failure modes drove the design architecture.
               </p>
             </div>
@@ -269,7 +281,7 @@ export default function AttendlyPage() {
                 <div className="cs-card-badge red-badge">FAILURE MODE 02 • INFORMAL ANARCHY</div>
                 <h3 className="cs-card-title">The Paper &amp; WhatsApp Trap</h3>
                 <p className="cs-card-desc">
-                  To escape enterprise complexity, small business owners resort to physical paper registers or group WhatsApp chats. This introduces rampant <strong>&ldquo;buddy punching&rdquo;, unverified timestamps, lost leave messages</strong>, and <strong>5–8 hours of painful manual payroll reconciliation</strong> at the end of every month.
+                  To escape enterprise complexity, small business owners resort to physical paper registers or group WhatsApp chats. This introduces rampant <strong>&ldquo;buddy punching&rdquo;, unverified timestamps, lost leave messages</strong>, and <strong>5-8 hours of painful manual payroll reconciliation</strong> at the end of every month.
                 </p>
 
                 <div className="cs-pain-grid">
@@ -307,7 +319,7 @@ export default function AttendlyPage() {
                 </p>
               </div>
               <div className="opp-stat-card">
-                <div className="opp-stat-num">5–50</div>
+                <div className="opp-stat-num">5-50</div>
                 <div className="opp-stat-title">Target Team Size</div>
                 <p className="opp-stat-sub">Deskless Staff &amp; Small Business Owners</p>
               </div>
@@ -318,14 +330,15 @@ export default function AttendlyPage() {
         {/* ================= 03. MARKET BENCHMARKING ================= */}
         <section id="competitor-analysis" className="cs-section">
           <div className="cs-section-inner">
-            <div className="cs-section-header">
-              <span className="cs-step-num">02</span>
-              <h2 className="cs-step-title">Market Benchmarking &amp; Differentiation</h2>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">MARKET BENCHMARK</span>
+              </div>
+              <h2 className="section-block-title">Competitive Landscape &amp; <span className="accent-amber">Differentiation</span></h2>
+              <p className="section-block-desc">
+                Auditing the operational extremes to carve out Attendly&apos;s defensible product positioning.
+              </p>
             </div>
-
-            <p className="cs-section-subtitle">
-              Auditing the operational extremes to carve out Attendly&apos;s defensible product positioning.
-            </p>
 
             <div className="cs-dark-table-wrapper">
               <table className="cs-dark-table">
@@ -407,12 +420,12 @@ export default function AttendlyPage() {
         {/* ================= 04. USER RESEARCH & TARGET PERSONAS ================= */}
         <section id="persona" className="cs-section">
           <div className="cs-section-inner">
-            <div className="audience-header-block margin-bottom-30">
-              <div className="cs-badge-row margin-bottom-12">
-                <span className="audience-tag-pill" style={{ borderColor: '#F3B61F', color: '#F3B61F' }}>TARGET AUDIENCE</span>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">TARGET AUDIENCE</span>
               </div>
-              <h2 className="problem-main-title">Two opposing personas, <span className="accent-amber">one unified loop</span></h2>
-              <p className="problem-sub-desc">
+              <h2 className="section-block-title">Two opposing personas, <span className="accent-amber">one unified loop</span></h2>
+              <p className="section-block-desc">
                 Synthesizing <strong>14 qualitative field interviews</strong> across retail stores, field service teams, and warehouse operations.
               </p>
             </div>
@@ -496,13 +509,15 @@ export default function AttendlyPage() {
         {/* ================= 05. CORE DESIGN DECISIONS & ARCHITECTURE ================= */}
         <section id="user-flow" className="cs-section">
           <div className="cs-section-inner">
-            <div className="cs-section-header">
-              <span className="cs-step-num">04</span>
-              <h2 className="cs-step-title">Strategic UX Decisions &amp; Information Architecture</h2>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">UX ARCHITECTURE</span>
+              </div>
+              <h2 className="section-block-title">Strategic UX Decisions &amp; <span className="accent-amber">Information Architecture</span></h2>
+              <p className="section-block-desc">
+                Architecting interaction patterns around physical industrial constraints and high-frequency routines.
+              </p>
             </div>
-            <p className="cs-section-subtitle">
-              Architecting interaction patterns around physical industrial constraints and high-frequency routines.
-            </p>
 
             {/* 3 Core UX Decisions Grid */}
             <div className="cs-dark-grid-3 margin-bottom-30">
@@ -548,10 +563,10 @@ export default function AttendlyPage() {
                     <h4>Employee Daily Core</h4>
                   </div>
                   <ul className="ia-node-list">
-                    <li><strong>Home Shift Hub</strong> — Live status, slide-to-punch, shift timer</li>
-                    <li><strong>Daily Deliverables</strong> — Delegated tasks &amp; completion toggles</li>
-                    <li><strong>Leave Portal</strong> — Live balance allowance &amp; request status</li>
-                    <li><strong>Personal Scorecard</strong> — Punctuality rate &amp; verified hours</li>
+                    <li><strong>Home Shift Hub</strong> - Live status, slide-to-punch, shift timer</li>
+                    <li><strong>Daily Deliverables</strong> - Delegated tasks &amp; completion toggles</li>
+                    <li><strong>Leave Portal</strong> - Live balance allowance &amp; request status</li>
+                    <li><strong>Personal Scorecard</strong> - Punctuality rate &amp; verified hours</li>
                   </ul>
                 </div>
 
@@ -561,10 +576,10 @@ export default function AttendlyPage() {
                     <h4>Director Command Center</h4>
                   </div>
                   <ul className="ia-node-list">
-                    <li><strong>Real-Time Headcount</strong> — Present, late, absent live ratios</li>
-                    <li><strong>One-Tap Approvals</strong> — Pending leave triage stream</li>
-                    <li><strong>Latecomer Alerts</strong> — Direct WhatsApp check-in nudges</li>
-                    <li><strong>Compliance Export</strong> — One-click payroll CSV generation</li>
+                    <li><strong>Real-Time Headcount</strong> - Present, late, absent live ratios</li>
+                    <li><strong>One-Tap Approvals</strong> - Pending leave triage stream</li>
+                    <li><strong>Latecomer Alerts</strong> - Direct WhatsApp check-in nudges</li>
+                    <li><strong>Compliance Export</strong> - One-click payroll CSV generation</li>
                   </ul>
                 </div>
 
@@ -574,10 +589,10 @@ export default function AttendlyPage() {
                     <h4>System Resilience Layer</h4>
                   </div>
                   <ul className="ia-node-list">
-                    <li><strong>Offline Cache Engine</strong> — Timestamp verification without Wi-Fi</li>
-                    <li><strong>Conflict Resolution</strong> — Automated network handshake</li>
-                    <li><strong>Role Permission Switch</strong> — Biometric multi-tier access</li>
-                    <li><strong>Push Dispatcher</strong> — Shift announcements &amp; alerts</li>
+                    <li><strong>Offline Cache Engine</strong> - Timestamp verification without Wi-Fi</li>
+                    <li><strong>Conflict Resolution</strong> - Automated network handshake</li>
+                    <li><strong>Role Permission Switch</strong> - Biometric multi-tier access</li>
+                    <li><strong>Push Dispatcher</strong> - Shift announcements &amp; alerts</li>
                   </ul>
                 </div>
               </div>
@@ -588,12 +603,12 @@ export default function AttendlyPage() {
         {/* ================= 06. KEY INTERACTION FLOWS ================= */}
         <section id="hi-fi-2" className="cs-section">
           <div className="cs-section-inner">
-            <div className="audience-header-block margin-bottom-30">
-              <div className="cs-badge-row margin-bottom-12">
-                <span className="features-tag-pill" style={{ borderColor: '#F3B61F', color: '#F3B61F' }}>USER FLOWS</span>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">KEY USER FLOWS</span>
               </div>
-              <h2 className="problem-main-title">Mission-critical <span className="accent-amber">user journeys</span></h2>
-              <p className="problem-sub-desc">
+              <h2 className="section-block-title">Mission-critical <span className="accent-amber">user journeys</span></h2>
+              <p className="section-block-desc">
                 Step-by-step visual progression demonstrating frictionless ergonomics in primary daily routines.
               </p>
             </div>
@@ -615,8 +630,16 @@ export default function AttendlyPage() {
                 <div className="journey-flow-deck">
                   <div className="journey-step-box">
                     <div
+                      role="button"
+                      tabIndex={0}
                       className="journey-screen-frame"
                       onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow1_Step1.png', 'EMPLOYEE JOURNEY • STEP 01', '01. Open Home Dashboard')}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          openLightbox('/assets/images/attendly/flow_screens/Flow1_Step1.png', 'EMPLOYEE JOURNEY • STEP 01', '01. Open Home Dashboard');
+                        }
+                      }}
                       title="Tap to expand screen"
                     >
                       <img
@@ -638,8 +661,16 @@ export default function AttendlyPage() {
 
                   <div className="journey-step-box featured-step">
                     <div
+                      role="button"
+                      tabIndex={0}
                       className="journey-screen-frame"
                       onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow1_Step2.png', 'EMPLOYEE JOURNEY • STEP 02', '02. Slide to Check-In')}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          openLightbox('/assets/images/attendly/flow_screens/Flow1_Step2.png', 'EMPLOYEE JOURNEY • STEP 02', '02. Slide to Check-In');
+                        }
+                      }}
                       title="Tap to expand screen"
                     >
                       <img
@@ -661,8 +692,16 @@ export default function AttendlyPage() {
 
                   <div className="journey-step-box">
                     <div
+                      role="button"
+                      tabIndex={0}
                       className="journey-screen-frame"
                       onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow1_Step3.png', 'EMPLOYEE JOURNEY • STEP 03', '03. Confirm Attendance')}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          openLightbox('/assets/images/attendly/flow_screens/Flow1_Step3.png', 'EMPLOYEE JOURNEY • STEP 03', '03. Confirm Attendance');
+                        }
+                      }}
                       title="Tap to expand screen"
                     >
                       <img
@@ -698,8 +737,16 @@ export default function AttendlyPage() {
                 <div className="journey-flow-deck">
                   <div className="journey-step-box">
                     <div
+                      role="button"
+                      tabIndex={0}
                       className="journey-screen-frame"
                       onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow2_Step1.png', 'ADMIN JOURNEY • STEP 01', '01. Admin Dashboard')}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          openLightbox('/assets/images/attendly/flow_screens/Flow2_Step1.png', 'ADMIN JOURNEY • STEP 01', '01. Admin Dashboard');
+                        }
+                      }}
                       title="Tap to expand screen"
                     >
                       <img
@@ -721,8 +768,16 @@ export default function AttendlyPage() {
 
                   <div className="journey-step-box featured-step">
                     <div
+                      role="button"
+                      tabIndex={0}
                       className="journey-screen-frame"
                       onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow2_Step2.png', 'ADMIN JOURNEY • STEP 02', '02. Leave Requests Queue')}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          openLightbox('/assets/images/attendly/flow_screens/Flow2_Step2.png', 'ADMIN JOURNEY • STEP 02', '02. Leave Requests Queue');
+                        }
+                      }}
                       title="Tap to expand screen"
                     >
                       <img
@@ -744,8 +799,16 @@ export default function AttendlyPage() {
 
                   <div className="journey-step-box">
                     <div
+                      role="button"
+                      tabIndex={0}
                       className="journey-screen-frame"
                       onClick={() => openLightbox('/assets/images/attendly/flow_screens/Flow2_Step3.png', 'ADMIN JOURNEY • STEP 03', '03. Employee Performance Report')}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          openLightbox('/assets/images/attendly/flow_screens/Flow2_Step3.png', 'ADMIN JOURNEY • STEP 03', '03. Employee Performance Report');
+                        }
+                      }}
                       title="Tap to expand screen"
                     >
                       <img
@@ -771,12 +834,12 @@ export default function AttendlyPage() {
         {/* ================= 07. INTERACTIVE WIREFRAME SYSTEM ================= */}
         <section id="lo-fi" className="cs-section">
           <div className="cs-section-inner">
-            <div className="audience-header-block margin-bottom-30">
-              <div className="cs-badge-row margin-bottom-12">
-                <span className="features-tag-pill" style={{ borderColor: '#F3B61F', color: '#F3B61F' }}>WIREFRAMES &amp; PRODUCTION SCREENS</span>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">WIREFRAMES &amp; PRODUCTION SCREENS</span>
               </div>
-              <h2 className="problem-main-title">Lo-Fi to Hi-Fi <span className="accent-amber">evolution</span></h2>
-              <p className="problem-sub-desc">
+              <h2 className="section-block-title">Lo-Fi to Hi-Fi <span className="accent-amber">evolution</span></h2>
+              <p className="section-block-desc">
                 Inspect the evolution from early structural spatial wireframes to final high-contrast production interfaces.
               </p>
             </div>
@@ -809,8 +872,16 @@ export default function AttendlyPage() {
                 {/* Featured Stage (Left) */}
                 <div className="inspector-stage">
                   <div
+                    role="button"
+                    tabIndex={0}
                     className="stage-frame hifi-frame"
                     onClick={() => openLightbox(currentScreen.img, `${screenMode.toUpperCase()} SCREEN • 0${screenIndex + 1}`, currentScreen.title)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox(currentScreen.img, `${screenMode.toUpperCase()} SCREEN • 0${screenIndex + 1}`, currentScreen.title);
+                      }
+                    }}
                     title="Tap to view full screen"
                   >
                     <img loading="lazy" decoding="async" src={currentScreen.img} alt={currentScreen.title} className="stage-img" />
@@ -864,12 +935,12 @@ export default function AttendlyPage() {
         {/* ================= 08. DESIGN SYSTEM & COMPONENT ARCHITECTURE ================= */}
         <section id="style-guide" className="cs-section">
           <div className="cs-section-inner">
-            <div className="audience-header-block margin-bottom-30">
-              <div className="cs-badge-row margin-bottom-12">
-                <span className="features-tag-pill" style={{ borderColor: '#F3B61F', color: '#F3B61F' }}>DESIGN SYSTEM</span>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">DESIGN SYSTEM</span>
               </div>
-              <h2 className="problem-main-title">Industrial ergonomics &amp; <span className="accent-amber">component tokens</span></h2>
-              <p className="problem-sub-desc">
+              <h2 className="section-block-title">Industrial ergonomics &amp; <span className="accent-amber">component tokens</span></h2>
+              <p className="section-block-desc">
                 Engineered for high readability in outdoor conditions and touch reliability for fast thumb gestures.
               </p>
             </div>
@@ -984,12 +1055,12 @@ export default function AttendlyPage() {
         {/* ================= 09. MEASURABLE DESIGN IMPACT ================= */}
         <section id="impact" className="cs-section">
           <div className="cs-section-inner">
-            <div className="audience-header-block margin-bottom-30">
-              <div className="cs-badge-row margin-bottom-12">
-                <span className="impact-tag-pill" style={{ borderColor: '#F3B61F', color: '#F3B61F' }}>BUSINESS IMPACT</span>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">BUSINESS IMPACT</span>
               </div>
-              <h2 className="problem-main-title">Measurable outcomes from <span className="accent-amber">14 user tests</span></h2>
-              <p className="problem-sub-desc">
+              <h2 className="section-block-title">Measurable outcomes from <span className="accent-amber">14 user tests</span></h2>
+              <p className="section-block-desc">
                 Validating the business case through verified user adoption, operational time savings, and data integrity.
               </p>
             </div>
@@ -1058,9 +1129,14 @@ export default function AttendlyPage() {
         {/* ================= 10. SENIOR RETROSPECTIVE & WHAT'S NEXT ================= */}
         <section id="next-steps" className="cs-section">
           <div className="cs-section-inner">
-            <div className="cs-section-header">
-              <span className="cs-step-num">09</span>
-              <h2 className="cs-step-title">Senior Retrospective: Trade-Offs &amp; Roadmap</h2>
+            <div className="attendly-section-header">
+              <div className="cs-badge-row">
+                <span className="cs-tag-pill attendly-tag-pill">SENIOR RETROSPECTIVE</span>
+              </div>
+              <h2 className="section-block-title">Trade-Offs, Intentional Cuts &amp; <span className="accent-amber">Roadmap</span></h2>
+              <p className="section-block-desc">
+                Critical architectural trade-offs made during discovery and engineering roadmap for v2.
+              </p>
             </div>
 
             <div className="cs-dark-grid-2 margin-bottom-20">
@@ -1125,7 +1201,7 @@ export default function AttendlyPage() {
         <section className="next-project-section">
           <Link href="/revsync" className="next-proj-card">
             <div className="next-proj-label">NEXT CASE STUDY</div>
-            <h3 className="next-proj-title">REVSYNC — Sales CRM &amp; Pipeline Control Center →</h3>
+            <h3 className="next-proj-title">REVSYNC - Sales CRM &amp; Pipeline Control Center →</h3>
             <p className="next-proj-desc">Role-scoped CRM replacing fragmented Excel tracking for high-velocity sales teams.</p>
           </Link>
         </section>

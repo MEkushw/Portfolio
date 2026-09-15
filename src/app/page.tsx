@@ -11,7 +11,7 @@ const galleryCardsList = [
     id: 'fashion-dual',
     img: '/assets/images/gallery_card_fashion_dual.png',
     rawImg: '/assets/images/gallery_card_fashion_dual.png',
-    title: 'Sona.Thrifts — Editorial Kaftan Lookbook & 1-Tap Checkout PDP',
+    title: 'Sona.Thrifts - Editorial Kaftan Lookbook & 1-Tap Checkout PDP',
     category: 'E-COMMERCE • DUAL-SCREEN EDITORIAL & CONVERSION FLOW',
   },
   {
@@ -303,7 +303,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Hero Content */}
+        {/* Hero Content - Minimalist Editorial Style */}
         <div className="hero-content">
           <div className="hero-main">
             <div className="hero-top-row">
@@ -311,17 +311,31 @@ export default function HomePage() {
                 <span className="hero-subtitle">I&apos;m a</span>
                 <h1 className="hero-title">Product Designer</h1>
               </div>
-              <p className="hero-description">I don&apos;t just design, I build the solutions with Engineering Mind and Design Interest.</p>
+              <p className="hero-description">
+                I don&apos;t just design, I build the solutions with Engineering Mind and Design Interest.
+              </p>
             </div>
 
             <div className="hero-stage" id="hero-stage">
               <div className="hero-card-window" id="hero-card">
-                <img src="/assets/images/user_hero.png" alt="Om Kushwaha Voxel Product Designer Hero" className="user-hero-img" id="user-hero-img" />
+                <div className="hero-80s-ambient-glow" aria-hidden="true" />
+                <img
+                  src="/assets/images/user_hero.png"
+                  alt="Om Kushwaha Voxel Product Designer Hero"
+                  className="user-hero-img"
+                  id="user-hero-img"
+                />
               </div>
             </div>
 
             <div className="hero-status-wrapper">
-              <p className="hero-status hero-status-bottom-left" style={{ color: '#CCF655' }} ref={heroStatusRef}>currently building KrishiNect— Connecting every farmer to the right tool, at the right time.</p>
+              <p
+                className="hero-status hero-status-bottom-left"
+                style={{ color: '#CCF655' }}
+                ref={heroStatusRef}
+              >
+                currently building KrishiNect: connecting every farmer to the right tool, at the right time.
+              </p>
             </div>
           </div>
         </div>
@@ -336,7 +350,7 @@ export default function HomePage() {
 
           {/* Case Studies Container */}
           <div className="cs-cards-stack">
-            {/* Case Study 01: RevSync — Clean Minimal Card */}
+            {/* Case Study 01: RevSync - Clean Minimal Card */}
             <div className="cs-card-bleed cs-card-revsync" id="case-study-1">
               <div className="cs-bleed-left">
                 <div className="cs-minimal-meta">
@@ -344,7 +358,7 @@ export default function HomePage() {
                   <span className="cs-minimal-tag">B2B CRM, Dashboard</span>
                 </div>
 
-                <h3 className="cs-minimal-title">RevSync — a sales CRM for<br className="cs-title-br" />Excel-dependent teams</h3>
+                <h3 className="cs-minimal-title">RevSync: a sales CRM for<br className="cs-title-br" />Excel-dependent teams</h3>
                 
                 <p className="cs-minimal-desc">Designed for sales reps, team leaders, and admins to replace<br className="cs-desc-br" />fragmented spreadsheets with real-time pipeline visibility.</p>
 
@@ -362,7 +376,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Case Study 02: Attendly — Clean Minimal Card */}
+            {/* Case Study 02: Attendly - Clean Minimal Card */}
             <div className="cs-card-bleed cs-card-attendly" id="case-study-2">
               <div className="cs-bleed-left">
                 <div className="cs-minimal-meta">
@@ -370,9 +384,9 @@ export default function HomePage() {
                   <span className="cs-minimal-tag">Mobile app, HR tech</span>
                 </div>
 
-                <h3 className="cs-minimal-title">Attendly — zero-friction attendance &amp;<br className="cs-title-br" />task management for small teams</h3>
+                <h3 className="cs-minimal-title">Attendly: attendance &amp;<br className="cs-title-br" />task management for small teams</h3>
                 
-                <p className="cs-minimal-desc">Designed for deskless workers and 5–50 person teams to replace<br className="cs-desc-br" />paper registers and missed punches.</p>
+                <p className="cs-minimal-desc">Designed for deskless workers and 5-50 person teams to replace<br className="cs-desc-br" />paper registers and missed punches.</p>
 
                 <div className="cs-minimal-link-wrap">
                   <Link href="/attendly" className="cs-minimal-link cs-link-yellow" id="btn-case-2">
@@ -461,7 +475,7 @@ export default function HomePage() {
           <div className="about-content">
             <h2 className="about-label">About Me</h2>
             <blockquote className="about-quote">
-              &quot;I&apos;m Om Kushwaha — I used to design mechanisms. Now I design interfaces. Same instinct, different material.&quot;
+              &quot;I&apos;m Om Kushwaha. I used to design mechanisms, now I design digital products. Same engineering mindset, new medium.&quot;
             </blockquote>
             <div className="about-illustration">
               <img src="/assets/images/about_banner_exact.png" alt="Om Kushwaha Mechanical to UI Design Watercolor Illustration" className="about-banner-img" loading="lazy" />
